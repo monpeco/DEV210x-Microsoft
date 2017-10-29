@@ -155,3 +155,65 @@ Primarily, portability refers to the process of compiling your code, without maj
 ---
 
 #### Module 1 Introducing C++   Portability, Compiling, and Linking   Compilation Process
+
+# Module 1 Introducing C++   Portability, Compiling, and Linking   Compilation Process
+
+https://youtu.be/0BOLiqC_w6A
+
+The first thing that happens is we say that the code is built.
+And that in itself is a multistep process.
+First a tool called the preprocessor goes through your code and
+manipulates it a little bit. The output of the preprocessor goes
+to something called the compiler.
+As James mentioned, real programs have lots of files in them,
+like not just five or ten, but thousands. And each one is compiled
+individually and the output of that is called an object file.
+After everybody's been compiled, then they're linked together
+into your actual executable, the thing that you run under the
+debugger or without the debugger.
+Now, when you're writing these individual files, the compiler
+makes sure that you've used the syntax of the library correctly.
+For example, the single line of useful code in there had quite
+a lot of syntax. It had bits and pieces of punctuation that you
+will understand by the time we're done. And the compiler makes
+sure that all that punctuation is being used properly.
+It doesn't necessarily check every single thing about your program.
+You are allowed to basically make a promise to the compiler.
+I'd like to call this piece of code that I swear to you will
+be somewhere else.
+The linker makes sure that those promises are being kept.
+And it puts all the somewhere elses together and connects everybody
+to the places they were planning to use and, okay, this is good,
+it all works.
+Those three steps of building are actually critical to understanding
+what happens when you get error messages. I've been teaching
+people C++ a very long time, and most people don't read their
+error messages at all. They don't even necessarily read the message
+part that tells them what the mistake is, but they also don't
+notice that in C++ you're told whether the error is a compiler
+error or a linker error. And that's vital to being able to solve
+the problem.
+
+
+#### Module 1 Introducing C++   Portability, Compiling, and Linking   The Role of the Linker
+
+Once the compiler has completed its tasks, the linker is then invoked. The linker is responsible for taking all the object files, that will be part of the application's executable code, and then links them all together in the application .exe file. At the same time, the linker ensures that all promises of the compiler are kept, during the linking process.
+
+A an example, if your program makes use of the cout function, that is found in the iostream set of files, the linker will ensure that the necessary code for that function, is included in your .exe file.
+
+---
+
+#### Module 1 Introducing C++   Portability, Compiling, and Linking   C++ Editors and Tools
+
+# C++ Editors and Tools
+Marcar esta página
+While the demonstrations in this course are using Microsoft's Visual Studio environment, you are free to choose the editor and compiler of your choice.  The samples used here follow the C++ 11 standard and therefore should work on your platform of choice and the editor and compilers you use on those platforms.
+
+The course does not, and cannot, teach all the different editors, compilers, and their syntax.  Please follow this [link](https://isocpp.org/get-started) to identify editors and compilers that you can use to write, edit, and compile C++ code.
+
+For more information , you can see: 
+Visual Studio: https://aka.ms/edx-dev210x-vs
+
+---
+
+#### Module 1 Introducing C++   C++ Fundamentals   Code Formatting
