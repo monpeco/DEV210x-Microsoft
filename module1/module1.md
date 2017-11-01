@@ -217,3 +217,79 @@ Visual Studio: https://aka.ms/edx-dev210x-vs
 ---
 
 #### Module 1 Introducing C++   C++ Fundamentals   Code Formatting
+
+Code Formatting
+Marcar esta página
+C++ is a case sensitive language. Case sensitivity means that your keywords and variable declarations must match the case. For example, a C++ keyword for a constant type is const. If you were to type Const or CONST, the compiler would not know that your intention was to use the keyword const.
+
+Aside from the case sensitivity, C++ also has a defined outline for program code and specific "elements" found in a typical C++ application. These elements consist of:
+
+* **Preprocessor directives** which are used to have the compiler execute tasks prior to compiling the source code
+* **using directives** which are utilized to indicate which namespaces to include in a source code file
+* a **function header** which consists of a return type, function name, and parameters
+* a **function body** containing the code that performs the actions required of that function
+* **statements** that are contained in the C++ source code file
+* **comments** for documenting the source code for programmers to understand what the code is intended to do
+* a `return` statement that sends data back to the function caller
+* curly braces to enclose bodies of statements. Commonly used to denote the body of a function or a flow controls statement such as a for loop
+
+C++ source code also permits judicious use of white space (tabs, spaces, new lines) to create code that is easier to read. The compiler completely ignores the white space, with a small exception concerning if statements that will be covered later. It is highly recommended that you make use of white space to indent and separate lines of code to aid in readability of your source code files.
+
+NOTE: Unlike Python, indenting lines after the for statement does not tell the compiler to execute those indented lines as part of the for statement. In C++, multiple statements for a single for statement, must be enclosed in curly braces. This will be covered more in Module 3, Control Statements.
+
+---
+
+
+#### Module 1 Introducing C++   C++ Fundamentals   C++ Statements
+
+# C++ Statements
+
+A C++ program is comprised of various components such as functions, methods, classes, etc. The instructions that form part of a C++ program typically reside inside of functions or methods. These functions are comprised of C++ statements. You will find yourself using various types of statements in your C++ code as listed here:
+
+* **declarations** - these are used to declare variables and constants that will be used in your application
+* **assignments** - these are used to assign values to variables in your application code
+* **preprocessor** directives - covered in the topic on Code Formatting
+* **comments** - used to document your code
+* **function declarations** - covered in the topic on Code Formatting
+* **executable statements** - these are used to perform operations and execute instructions. Examples would be cout << "Hello World!"; which outputs Hello World! to the console.
+
+You will use these statement types throughout this and successive courses on C++.
+
+---
+
+#### Module 2 Data Types in C++   Available Data Types   Numeric Data
+
+# Numeric Data
+
+C++ contains intrinsic data types to store numeric values in your application code. It's important to remember that these values are binary-based and not as flexible as their base 10 counterparts. For example, in mathematical terms of a base 10 integer, the definition is a value that is negative infinity to positive infinity whole numbers. Modern computers still cannot represent numbers these large. Take as an example the int type in the Numeric Data Types table. The range does not exceed 3 billion in either direction.
+
+The byte representation given in that table will give you a hint as to how the values are stored in the memory and on disk.
+
+NOTE: The type names that start with a __ character are considered non-standard types.
+
+| Type Name             | Bytes | Alias                               | Range                           |
+|-----------------------|----|----------------------------------------|---------------------------------| 
+| int	                | 4	 | signed	                              | –2,147,483,648 to 2,147,483,647 | 
+| unsigned int	        | 4	 | unsigned	                              | 0 to 4,294,967,295 | 
+| __int8	            | 1	 | char	                                  | -128 to 127 | 
+| unsigned __int8	    | 1	 | unsigned char	                      | 0 to 255 | 
+| __int16	            | 2	 | short, short int, signed short int	  | –32,768 to 32,767 | 
+| unsigned __int16	    | 2	 | unsigned short, unsigned short int	  | 0 to 65,535 | 
+| __int32	            | 4	 | signed, signed int, int	              | –2,147,483,648 to 2,147,483,647 | 
+| unsigned __int32	    | 4	 | unsigned, unsigned int	              | 0 to 4,294,967,295 | 
+| __int64	            | 8	 | long long, signed long long	          | –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | 
+| unsigned __int64	    | 8	 | unsigned long long	                  | 0 to 18,446,744,073,709,551,615 | 
+| short	                | 2	 | short int, signed short int	          | -32,768 to 32,767 | 
+| unsigned short	    | 2	 | unsigned short int	                  | 0 to 65,535 | 
+| long	                | 4	 | long int, signed long int	          | –2,147,483,648 to 2,147,483,647 | 
+| unsigned long	        | 4	 | unsigned long int	                  | 0 to 4,294,967,295 | 
+| long long	            | 8	 | none	                                  | –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | 
+| unsigned long long	| 8	 | none	                                  | 0 to 18,446,744,073,709,551,615 | 
+| float	                | 4	 | none	                                  | 3.4E +/- 38 (7 digits) | 
+| double	            | 8	 | none	                                  | 1.7E +/- 308 (15 digits) | 
+| long double	        | 8	 | none	                                  | 1.7E +/- 308 (15 digits) | 
+
+
+---
+
+#### Module 2 Data Types in C++   Available Data Types   Character Data
