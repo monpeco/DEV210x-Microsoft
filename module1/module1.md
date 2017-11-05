@@ -313,3 +313,23 @@ NOTE: The type names that start with a __ character are considered non-standard 
 ---
 
 #### Module 2 Data Types in C++   Available Data Types   Other Data Types
+
+# Other Data Types
+
+C++ supports other data types outside of the numeric or character data types.  The first one we see in the table below, is the Boolean data type called bool.  This is used to represent true or false values in an application.  In previous languages such as C, false was represented as a 0 value and true was represented as any non-zero value.
+
+| Type Name | Bytes   | Alias    | Range                           |
+|-----------|---------|----------|---------------------------------| 
+| bool	    | 1	      | none	 | true or false | 
+| enum	    | varies  | none	 | dependant on the enclosed data types | 
+
+C++ also has the concept of an enumeration, called an enum.  An enumeration is a set of constants stored as literal values.  They limit the choices for the type.  For example, when dealing with an int data type, you can assign any value to that data type that fits within the range of the integer type for that computer.  With an enum, you specify a limited set of literal constants that can be assigned to the type. 
+
+Consider the need to use a data type to represent days of the week.  How do you store this information in a data type?  You could use an array, but what type of data would you use?  Perhaps a string data type.  But how do you prevent someone from adding a non-valid day of the week, like moncleday, to the array?  If you create an enumeration that stores only valid values for Sunday through Saturday, you constrain the data type to those literal constants only.
+
+Enumerations are covered later in this module under the lesson on Complex Data Types.
+
+---
+
+#### Module 2 Data Types in C++   Available Data Types   Choosing Data Types
+
