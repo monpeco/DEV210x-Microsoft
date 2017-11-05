@@ -293,3 +293,23 @@ NOTE: The type names that start with a __ character are considered non-standard 
 ---
 
 #### Module 2 Data Types in C++   Available Data Types   Character Data
+
+# Character Data
+
+Character data is used to represent non-numeric data such as letters and symbols.  Character data is actually represented as numeric information under the covers.  The standard char type is used to represent the numeric values for character data as represented by the basic character set present on a particular computer.  This is determined by the locale settings.
+
+For internationalization purposes, the wchar_t type is used which expands on the numeric values available to represent character sets from various languages found around the world. 
+
+NOTE: The type names that start with a __ character are considered non-standard types.
+
+
+| Type Name                         | Bytes   | Alias      | Range                           |
+|-----------------------------------|---------|------------|---------------------------------| 
+| char	                            | 1	      | none	   | –128 to 127 by default 0 to 255 when compiled by using /J | 
+| signed char	                    | 1	      | none	   | -128 to 127 | 
+| unsigned char	                    | 1	      | none	   | 0 to 255 | 
+| wchar_t, char16_t, and char32_t	| 2 or 4  | __wchar_t  | 0 to 65,535 (wchar_t & char16_t), 0 to 4,294,967,295 (char32_t) | 
+
+---
+
+#### Module 2 Data Types in C++   Available Data Types   Other Data Types
