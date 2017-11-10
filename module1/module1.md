@@ -333,3 +333,13 @@ Enumerations are covered later in this module under the lesson on Complex Data T
 
 #### Module 2 Data Types in C++   Available Data Types   Choosing Data Types
 
+Choosing the correct data type is important in your applications to ensure that you can represent your data 
+efficiently and correctly. Some examples of this would be;
+
+* making use of **short** rather than **int** if your data range permits
+* using a **double** rather than a **float** to get greater a accuracy for values representing money
+* using a **wchar_t** for character data that doesn't fit in the standard ASCII character set, such as Japanese kanji
+
+---
+
+#### Module 2 Data Types in C++   Variables and Constants   Introducing Variables
