@@ -510,3 +510,174 @@ that are easier to maintain in the future.
 ---
 
 #### Module 2 Data Types in C++   Variables and Constants   Type Conversions
+
+# Type Conversions
+
+Casting refers to converting one data type to another. Some data conversions are not possible while some are 
+possible but result in data loss. C++ can perform many conversions automatically, what is known as implicit 
+casting or implicit conversion. For example, attempting to convert a smaller data type to larger data type 
+as shown here:
+
+```c++
+int myInt = 12; 
+long myLong;
+myLong = myInt;
+```
+
+In the first line, we declare an integer data type and assign it a value of 12. The next line declares a long 
+data type and in the third line, we assign the integer data type value to the long data type. C++ automatically 
+converts the data type for you. This is known as a widening conversion. Some programmers also call this an 
+expanding assignment. We are expanding or widening the data type to a larger one. In this case, there is no 
+loss in data. The following table highlights some potential data conversion problems.
+
+| Conversion	 | Potential Issues | 
+| -------------- | ---------------- |  
+| Large floating point type to small floating point type	 | Loss of precision and/or the starting value might be out of range for the new type | 
+| Floating point type to integer type	 | Loss of the fractional component of the floating point type and/or out of range | 
+| Bigger integer type to smaller integer type	 | Starting value may be out of range for the new type | 
+
+This table only deals with numeric data type conversions. There are other conversion types such as from character 
+to numeric or numeric to character, or among character types. C++ also uses the boolean type that represents 
+true or false. If you assign a zero value to a bool variable, it will be converted to false. Any non-zero 
+value is converted to true.
+
+When you want to explicitly perform a conversion or cast, you can use the type cast features of C++. For 
+example, the previous widening conversion in the int to long cast was implicit but you can also tell the 
+compiler that you are know what you are doing by using the type cast statement as in:
+
+```c++
+long myLong = (long)myInt;
+
+// or you can use this version as well
+
+long myLong = long(myInt);
+```
+
+C++ also provides a cast operator that is more restrictive in its usage. This in the form `static_cast (type)`. 
+This static cast operator can be used for converting numeric values or to numeric values. As an example:
+
+```c++
+char ch;
+int i = 65;
+float f = 2.5;
+double dbl;
+ch = static_cast<char>(i);   // int to char
+dbl = static_cast<double>(f);   // float to double
+```
+https://youtu.be/E7K6czWbnkc
+
+Yes. So I have here... it's basically a similar program to
+the one we had before. We still have an int I and a double D
+and a bool flag.
+But here we've replaced all of those weird-looking conversions
+with uses of these casts. So if we build it,
+we will see that there are no errors and no warnings, so that's
+a good sign. And we can see that if we run the program
+basically as we step through, we'll see that it has the same
+behavior as before. So when we assigned the 3.2 to I, it was
+converted to int. So this was what the compiler was doing under
+the hood. We've added this cast to say compiler, I know what
+I'm doing. This is exactly what I meant to do.
+One thing that I guess we can also show here, so when we're printing
+things to the console, they don't have to be strings. Like before
+we had the string "Hello, World!" Now we can print an integer,
+and basically the library will go and format it as a string for you.
+So here we can see we're printing I. And if we go to the output
+window, we can see that... or to console window, we can see that
+we've printed negative 1.
+Stepping through, we can just see basically the same thing with
+all the rest of these. Yeah.
+Yeah. So the casting takes away the warnings from the compiler.
+This particular demo is super artificial. I mean, why would
+you take that constant number like 3.2 and then stick it into
+an integer so as to throw the .2 away. You know, we're just
+showing you this code so that you will understand what happens
+in some of your code. One of my favorite newbie errors is when
+somebody writes double ratio equals 1 divided by 3.
+Do you want to show them what the compiler will give them when
+they do that?
+Yeah, that's actually... that's actually a good example.
+So as we noted, integer types can only deal with integers.
+So 2 is an integer, but so are, for example, 1 or 3 and 2.
+So we build this, and you might think, oh, well, this is one half.
+But we can't represent one half in an integer. So when we run
+this, we'll see that, well, the result has been truncated and
+we just get the 1. We've lost that .5.
+So often what people will say is, oh, well, I can turn this into
+a double.
+Right.
+So now I is a floating point value, so it can hold that .5,
+so clearly the value is now going to be 1.5.
+And it's not. It's 1.0.
+The reason for this is that this expression, 3 divided by 2,
+it doesn't matter where that appears. It's always going to have
+the same value. And because both of those are integers, we end
+up performing integer math on them. So we end up dividing 3
+by 2 which yields 1 with a remainder of 1, so there's no...
+there's no .5, like there's just this remainder of 1, and we
+throw away that remainder. We say we're not going to use that.
+And so you end up with this double precision number with lots
+and lots of 0s on the end of your 1.
+Something that happened fairly recently to C++ was adding the
+capability to leverage the fact that the compiler knows when
+you're making these assignments what the types are. So when
+you take integer 3 divided by integer 2, the result is an integer.
+If you were to change that to a 3.0 divided by 2, then the result
+would be a double. And that's how to get around this problem,
+but it also puts you in the position of if you then declared
+the type of the variable yourself explicitly, sometimes the compiler
+warns you and says that type doesn't go with this expression
+that you're calling. And I think a lot of us have wanted this
+for a long time, is to say to the compiler, if you're so smart,
+why don't you do it. And that capability is actually in the language
+in a keyword called auto.
+Yes.
+So unfortunately we cannot use this lovely initialization syntax.
+And this is an oddity of the language. I'm very sorry.
+So what we can do... there's another way to initialize things.
+You can use the equal sign just like... you know, it looks like
+assignment but it's still initialization. And we can change
+this to just say auto, which means, compiler, go tell me what
+this type... or go figure out what the type of this expression is.
+So 3 divided by 2 is an int expression, so it's type int.
+And so I here is an integer.
+And if we run, we can see that I is indeed of type int, and it
+has the value of 1. And in the IDE, when we're editing, you can
+hover over that...
+Over I....
+I. You hover over the I. And you can see here that it says,
+oh, it's an int, so the IDE can tell you what that type is even
+though you've just said auto. So it can do that deduction.
+Then if you change the expression, if you make that 3.0 divided
+by 2...
+Yes. Then if we hover over the I, you' see it's now a double.
+Double I. So a lot of people come from other languages that
+are not strongly typed and they think that this is the type adjusting
+to match the expression, but it's not. It's the keyword auto
+says to the compiler you figure out what to strongly type this
+variable as and that will be its type for the rest of time.
+Right. So in this particular example, there's no... there is...
+to the compiler, there's no difference between this, this declaration
+here, auto I equals 3.0 over 2. And if we were to put double
+here, it's exactly the same. There's no difference between them
+at all.
+Well, auto is shorter than double but longer than int.
+Yes. Well...
+I tend to type whichever is the shortest.
+Yeah. Yeah, there is still great debate about, you know, what
+the right balance is between using type inference and not using
+type inference.
+Yes. But still.
+Just know that it's a tool in your toolbox.
+And you may see auto from time to time in our demos where the
+things we are declaring have longer types than int or double
+and we don't feel like typing all of it, but understand the compiler
+does not care. It's the same as if we had typed out its name
+with pressing keys. Boy, the word type is overloaded, isn't it?
+Yeah.
+
+
+---
+
+#### Module 2 Data Types in C++   Variables and Constants   Self Check
+
