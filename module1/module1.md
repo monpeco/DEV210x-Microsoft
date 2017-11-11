@@ -382,3 +382,131 @@ https://youtu.be/owk_3MXMgxc
 ---
 
 #### Module 2 Data Types in C++   Variables and Constants   Introducing Constants
+
+# Introducing Constants
+
+Similar to a variable, a constant expression is a named memory location for a value used in your application.  
+The difference is that, as you might expect, a constant expression cannot have its value change in the program 
+during run time.  C++ uses the keyword const to indicate that an expression is a constant.
+
+When you declare a constant in C++, you must assign a literal value to that constant at the same time.  You 
+cannot assign it later in program nor can you change the value in code later.  Also, because the value cannot 
+be changed, you cannot initialize a constant with a variable or any other value that will have its value 
+modified during runtime.
+
+https://youtu.be/6vpY6kAXSWU
+
+So far, we've been pretty
+bossy to the compiler. We've said, this is an integer. This is
+a double. Here's a function that I want you to call. And the
+compiler has sort of followed along and it's been a little bit
+like an assistant who knows what's going on and says, are you sure?
+Did you want to do that? Gives you a warning if you try to put,
+you know, a number into an integer, that kind of thing.
+Sometimes gives you an error if you try to call a function that
+it's never heard of.
+But you can kind of engage the compiler as your helper, your
+external memory, by putting more information into your program
+and then getting it to enforce it. And one of the most important
+things you can say that is a particular variable doesn't actually
+vary, despite the name.
+There are languages in which nothing varies, even when it's called
+a variable. And then there are languages where it's assumed that
+everything can. In C++, and this is sort of a late motif for
+us, we get to choose if we want immutability, we can have it.
+If we don't, we don't have to.
+So when you mark something with this keyword const, you are saying
+this will not change. None of the code you're about to compile
+is going to change the value of this variable. And then the
+compiler will actually enforce that. And if you have a line
+of code later that tries to change the value of something you've
+marked const, you'll get a compiler error, basically telling
+you, you can't. It's const. Why would you want to do that?
+I think everyone's written the kind of code where we change the
+wrong half of something. You know, we're trying to do how many
+transactions have we had today and is it the limit and we mean
+to raise the number of transactions and just in a moment of stupidity,
+we raise the limit.
+And then we're running the code on the debugger and we can't
+understand it. We're never getting to the limit. The limit keeps
+getting bigger. What's going on. If we had told the compiler
+that the limit was const, then when we wrote that stupid line,
+the compiler would have said, are you sure? Is that your final answer?
+And we could have caught that mistake. And that happens all
+the time to me when I used const from the very beginning.
+If I declare something, like a limit, that I know isn't going
+to change and I immediately say that it's not going to change,
+then I catch myself when I make a mistake. And I think there's
+also some speed-ups possible from that, right?
+Potentially. There's a few places. But you shouldn't worry
+about performance when it comes to const.
+No, we don't want to premature optimize.
+It's not all that important. But absolutely, you should use
+const everywhere you can. If you can use const somewhere, do it.
+This also actually encourages several very good programming styles.
+So, for example, in many programs, especially in legacy programs,
+people will reuse local variables. So they might declare one
+I integer at the top of a file and then have ten loops that use
+that same I.
+Loops, I guess, are a bad example because you have to change those.
+But you always want to use each variable in as constrained a
+location as possible.
+So generally, yes, you should try to make everything const, but
+then things like loop variables, you should, you know, because
+they can't, they...
+They have to change. We're going to go around and increment
+I every time through the loop.
+But const by default is a good rule.
+Const first, and the reason is if you ever come up to a program
+where the developer despite appear to have heard of const and
+you try to label something const for the first time, well, the
+compiler will step up and help you and you won't really enjoy
+that experience very much. And I think the demo we have is actually
+going to show that by having to add const as we go through.
+Yes.
+All right. Let's give them a whirl through that.
+
+---
+
+#### Module 2 Data Types in C++   Variables and Constants   Constants Demo
+
+# CONST Demo
+
+https://youtu.be/HxmX6iZ14jk
+
+Actually, so what we have here is we have just a little main function.
+We still have the same addtwo.
+And we have, you know, this is just like we had before, I as
+a regular int. But then J and K are const integers, and you can
+see that we can add the const either on the left or on the right.
+There are warring factions that argue that it belongs on one
+side or the other. But the important...
+The compiler is neutral. The compiler doesn't care.
+Yeah, the compiler doesn't care. You can put it in either place.
+And so we initialize each of these with this addtwo expression.
+So all of that is fine.
+So then this addtwo is also fine. Because we're making a copy
+of the J as we said, because it's passed by value. We're going
+to copy the J and we're not going to actually modify the original J.
+But as soon as we try to assign to J or change its value in any
+way, so even if we were to say J++, that would not work.
+Similarly, for K, if we were to try to just, you know, assign
+a new value, 7, that's not going to work. And if we build,
+we'll see that the compiler is going to report error messages
+and this time, it's actually a very easy to understand message.
+It says, you cannot assign to a variable that is const. So this
+is an extremely useful feature for
+all code, use it everywhere.
+Use it everywhere. When you declare a variable and you think
+that you know it's going to change, because this is the value
+I'm calculating, the total, the sales tax, whatever, then obviously
+don't mark that const. But most of our programs are full of numbers
+that are not going to change. And not just numbers either.
+Variables of all types. And if you have the habit on every line
+when you declare something of asking yourself whether it's going
+to change or not, you will end up with more correct programs
+that are easier to maintain in the future.
+
+---
+
+#### Module 2 Data Types in C++   Variables and Constants   Type Conversions
