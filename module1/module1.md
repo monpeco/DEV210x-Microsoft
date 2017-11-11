@@ -772,3 +772,116 @@ for (int i = 0; i < 5; i++)
 
 #### Module 2 Data Types in C++   Complex Data Types   Strings
 
+# Strings
+
+Strings are a series of characters. C++ represents strings in one of two ways. The first maintains backward 
+compatibility with the C language and represents the string as a character array. There is one aspect to a 
+**C-style string** that is important to note. The last character of every string you store is the null character 
+string, typically represented by the ASCII code for 0 which is \0. This is necessary so that the compiler 
+knows when the string ends. An example demonstrates a C-style string stored in a character array:
+```c++
+char isAString[6] = { 'H', 'e', 'l', 'l', 'o', '\0'}; 
+char isNotAString[5] = { 'H', 'e', 'l', 'l', 'o'}; 
+cout << isAString << endl; 
+cout << isNotAString << endl;
+```
+The most common mistake made by users of the C-style string is to forget to make the char array large enough 
+to accommodate the `\0` character, but also forgetting include the \0. In the previous example, a programmer 
+might think that an array of size 5 would be large enough to contain Hello because that's how many characters 
+are in the word. However, the null character would not be included in the second array, which could result in 
+errors in code that uses this array. The reason is that C++ does not consider the isNotAString array to be a 
+string.
+
+Consider the output displayed in Figure 2.1. Note that the first output correctly terminates because C++ 
+encountered the null (`\0`) character. The second did not terminate and output the contents of adjacent 
+memory.
+
+string output showing how the null character is required to ensure the end of the string is found
+
+An alternative method of declaring a character array for use as a string is to simply initialize it with a 
+string literal. A string literal is a sequence of characters enclosed in the double quotes (`"`). For example:
+```c++
+char isAString[6] = "Hello"; 
+char isAnotherString[] = "Array size is inferred";
+```
+In the previous example, the first line creates an array of size 6 and assigns the string literal Hello to 
+the array. The second example lets the compiler infer the size from the string literal itself. Note that 
+neither of these two string literals specifies a `\0` character. The compiler will implicitly add that for you. 
+However, caution is advised in the first line to ensure that you allow enough room in the array size specified 
+for the null character. If you create an array that is larger than required for the string literal along with 
+the null character, then C++ simply fills the remaining elements of the array with null characters.
+
+### The string Class 
+
+If the use of character arrays, single quoted characters, and null termination characters are making you think 
+that strings aren't worth the hassle, consider the string class instead. The ISO/ANSI standard helped to expand 
+the string handling capabilities of C++ by adding the string class.
+
+In order to use the string class, you have to include the string header file. We have not covered namespaces yet but to make typing much easier, you would add a using statement as in the following example.
+```c++
+using namespace std; 
+string myString = "Hello!"; 
+std::string myNewString = "Less typing";
+```
+Without the using directive, you would have to type std::string every time you wanted to use the string class 
+in your code, as in the second line above.
+
+As you can see from the code example, you use string in the same manner in which you would use any other data 
+type in C++. You also do not need to add a null character to terminate your string.
+
+
+---
+
+
+#### Module 2 Data Types in C++   Complex Data Types   Structures
+
+# Structures
+
+Arrays can store multiple pieces of data in one compound data type but recall, the data types must all be of 
+the same type. If that is the case, how might you store multiple pieces of data in one type, where the 
+individual pieces are of different data types? For example, let's say that we want to store information 
+about a coffee bean. We might want to store information about the bean type, its strength, and perhaps 
+which country it originated from. In this case, we could use all strings to store that information but 
+what if the strength was intended to be a number from 1 to 10. In this case, we would want to store two 
+strings and one integer in our coffee bean data type.
+
+We haven't covered classes yet, which is another data type we could use, but instead, we will use a 
+structure (**struct**) to store this information. Structures are known as user-defined types. You define 
+the struct by giving it a name and then adding the member data types as in the following example:
+```c++
+struct coffeeBean 
+{ 
+     string name; 
+     string country; 
+     int strength; 
+};
+```
+Recall that in order to use the string data type in our struct, the C++ file that contains the struct 
+must include the string header file. This code snippet also assumes that using namespace std; has also 
+been included.
+
+Once we have defined the structure, we can then use it in our code the same as any other data type. To 
+use the coffeeBean struct in your code, you simply declare a new variable of that type as shown in this 
+example.
+```c++
+struct coffeeBean 
+{ 
+     string name; 
+     string country; 
+     int strength; 
+}; 
+
+coffeeBean myBean = { "Strata", "Columbia", 10 }; 
+coffeeBean newBean; 
+newBean.name = "Flora"; 
+newBean.country = "Mexico"; 
+newBean.strength = 9; 
+cout << "Coffee bean " + newBean.name + " is from " + newBean.country << endl;
+```
+You can assign values to a struct using one of the methods seen here. For myBean, we assign values in 
+the curly braces while for newBean, we use the dot notation. You can also access the values of the the 
+struct members using the dot notation as well, shown in the cout statement at the end.
+
+---
+
+#### 
