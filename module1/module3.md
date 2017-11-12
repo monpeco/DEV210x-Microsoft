@@ -185,3 +185,97 @@ want to consider the switch statement, presented next.
 ---
 
 #### Module 3 Control Statements   Decision Statements   switch Statements
+
+# switch Statements
+
+If there are too many else if statements, code can become messy and difficult to follow. In this 
+scenario, a better solution is to use a switch statement. The switch statement simply replaces 
+multiple else if statements. The following sample shows how you can use a switch statement to 
+replace a collection of else if clauses.
+
+### switch Statement
+
+```c++
+char response = 'y';
+switch (response)
+{
+   case 'y':
+      // Block of code executes if the value of response is y.
+      break;
+   case 'Y':
+      // Block of code executes if the value of response is Y.
+      break;
+   case 'n':
+      // Block of code executes if the value of response is n.
+      break;
+   default:
+      // Block executes if none of the above conditions are met.
+      break;
+}
+```
+Notice that there is a block labeled default:. This block of code will execute when none of the other 
+blocks match.  The default block is optional.
+
+In each case statement, notice the break keyword. This causes control to jump to the end of the switch 
+after processing the block of code. If you omit the break keyword, the application may not perform as 
+you anticipate.  In other languages, such as C#, omitting the break; keyword will cause the code to no 
+longer compile. 
+
+Without the break statement, the code will "fall through" to the remaining cases until it encounters a 
+break statement.   Be very careful in using fall through logic in your switch statements.  The most 
+common use for a fall through scenario is when you want to handle multiple cases with a single statement 
+or set of statements.
+
+If you are coming from another programming language, such as C#, that also uses the switch statement, 
+you might notice that in the C# language, you can use string values in your switch statements and don't 
+have to use integers or enumerated types.  C++ switch statements support the following data types as 
+expressions:
+
+* intrinsic data types such as int or char
+* enumerations
+
+---
+
+#### Module 3 Control Statements   Decision Statements   The Conditional (Ternary) Operator
+
+# The Conditional (Ternary) Operator
+
+The C++ conditional operator is also known as a ternary operator because it takes three operands.  
+How this operator functions is somewhat similar to an if statement or a switch statement, but in a 
+more compact form and for one single Boolean value with one of two possible outputs.   That is to 
+say, the first operand is evaluated as a Boolean result.  If the result is true, then the second 
+operand will be the one evaluated.  Otherwise, the third operand will be evaluated.   A sample 
+helps amplify this.
+```c++
+#include <iostream> 
+using namespace std; 
+int main() 
+{ 
+     int i = 1, j = 2; 
+     cout << ( i > j ? i : j ) << " is greater." << endl; 
+}
+```
+In this example, we have two integer variables, i and j which are initialized to 1 and 2 respectively.  
+The ternary operator is embedded inside the cout statement and essentially follows this pattern:
+
+it checks whether i is greater than j
+it outputs the proper numeric value along with is greater.
+In the code example here, j is greater than i so the condition evaluates to false and the value for 
+j (2), is output to the console along with the text is greater.  In other words, the output 
+is "2 is greater."  If i was 5 and j was 2, the output would be, "5 is greater." 
+
+* i > j ? **i** : j where i is greater than j then the bold value is selected
+
+i > j ? i : **j** where j is greater than i, then the bold value is selected
+
+---
+
+#### Module 3 Control Statements   Decision Statements   Flow Control Video
+
+# Flow Control
+
+https://youtu.be/SBa_3u9Ur08
+
+---
+
+#### Module 3 Control Statements   Repetition Statements   Introduction
