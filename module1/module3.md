@@ -443,3 +443,272 @@ for (int x = 0; x < 8; x++)
 ---
 
 #### Module 3 Control Statements   Repetition Statements   Flow Control Demo
+
+# Flow Control Demo
+
+Absolutely. So what we have here
+in this code editor window, there we go, is a
+simple program. So I'm actually just going to... we're not going
+to walk through it first. We'll just build it and step through
+it in the debugger. So you can see here that we have two integer
+local variables, X and Y, and we've initialized one to...
+the first to 2 and the second to zero.
+So we have an if statement, and in here we check if X is greater
+than 3, then we'll increment Y, so we'll add one to it.
+Otherwise, we'll remove one from Y. When we hover over X, there's
+another feature of the debugger is the... it will actually show
+you what its current value is. So right now, we can see it's
+two, which is as we expected, because that's what we initialized
+it to.
+And we know that 2 is less than three, I think.
+It's not greater than, anyway.
+Yes. So we're not going to take this first branch of the if block.
+We'll use the else branch. So if we step over, we'll see that,
+indeed, we've entered into the else block, and we'll change the
+value of Y. So Y is now negative one.
+So then we have a four-loop here, and this four-loop is going
+to count from I equals zero. So we're going to initialize I to
+have the value of zero. I is a common loop variable and if you
+have nested loops, often people use I, J, K. And if you get
+any more than that, you're in a lot of trouble.
+You're doing something wrong.
+Yeah, it's not good.
+So we're going to loop as long as I is less than X. So it's
+important to know that this is not the condition when we stop.
+So this is the condition, we will loop as long as this is true.
+And each time through the loop, we will increment I. So we're
+basically counting from I equals zero to I equals 2.
+I don't think we've shown that plus-plus operator before.
+I don't think we have, no so this plus-plus operator is actually
+equal to this. So there's no difference between the two of them.
+It's just a shorthand notation, and it comes in very handy in
+many cases.
+The very name of the language is a joke based on this, that
+you take the language C, and you increment it and make it a little
+bit bigger, or better, and it's really vital. You see the plus
+plus and awful lot in our applications, and that's all it is.
+It just bumps it up by one.
+And minus-minus is the opposite. It subtracts one so we can
+step through here. So we've entered the loop for the first time.
+So the value of I is zero. It's important to note that this increment
+happens at the end of the loop body. And we'll maybe see an
+example of that in a moment. And we can step over this, and so
+you can see, we're printing out numbers. We're printing out
+the value of I each time through the loop.
+So at the end there, I was 2, and so we can see that we've printed
+zero and 1. And then when I equals 2, it was no longer less than
+X so we broke out of the loop.
+And that's a really common C++ idiom, to go from zero to less
+than X means to go X times.
+Yes.
+You know, so we went through that loop twice. Once for zero
+and once for one. And we are a zero-based language and that's
+how we go through things. And if we go through something five
+times, it will be for zero, one, two, three, four. Not for one,
+two, three, four, five. It's not...
+Indeed. So here we have a while loop, which is effectively
+the same... basically a 4 and a while loop can accomplish all
+of the exact same things.
+So here we're going to loop as long as X is less than 4.
+So we're going to step into the loop, X is currently 2, so it's
+obviously less than 4.
+Now, we have another variable here, J. It's important to note
+that so local variables like these are constrained by their scope,
+which is defined by these braces. So the braces in which local
+variables are defined specify where you can use them. So, for
+example, we could not use J out here. We certainly couldn't
+use it here before we, you know, we declared it. We also couldn't
+use it here before it's declared, even though we're in that same
+set of braces. So the scope of J is from the point where it's
+declared up until the brace that ends it. These braces are called...
+are what's called a compound statement, and they basically just
+group statements. So each of these is a statement here, and these
+braces here just say, ah, this is a set of statements that we
+want to treat as a group. So that's why we put them after most
+loop bodies, or most loop headers.
+So we've added 2 to X so it now has a value of 4.
+We come back up, we check the condition. X is no longer less
+than 4 so we break out.
+Here, we're showing... so that plus-plus operator that we talked
+about, there's actually two different forms of it. You can have
+plus-plus at the end of the X, or you can have plus-plus before
+the X.
+They have the same effect on X, so both of them increment X.
+They both add one to the value of X. The difference is what
+the value of that expression is. So, you know, you might say,
+well, X++, it's, you know, you would never use the value.
+But you can actually take that and, you know, use its value to
+assign another variable. So X++
+increments X, but then it yields the original value of X.
+++X increments X and it yields the new value of X. So, for example,
+we can step over here, we're going to, you know, do X++ and assign
+the value to Y.
+And we're going to see that Y has the value of 4, which was the
+old value of X, and X has the value 5, which is the new value.
+Similarly, if we again increment X, then X will have the value
+6, and we expect here Y will also have the value 6, because we're
+using the pre-increment form.
+And, indeed, thankfully, that's what happened.
+Now, if this freaks you out at all, and it does freak some
+people out when they first get started, just don't ever use it,
+the plus-plus operator, not just on a line of its own. That is,
+we could have easily written Y equals X, and then on a new line
+X++, or the other way around. And if you don't want to remember
+which side of the variable the plus plus goes on, just do it
+that way. Just put them on separate lines and you'll be really
+clear about what you're after.
+But it's important to mention it to people, because otherwise
+they get very confused. Oh, and what's the most important rule
+of stack overflow C++ questions?
+Don't increment... don't plus plus the same variable twice on
+a line and then write me a stack overflow question asking why
+it's being weird. Right? Like Y equals X++ plus X++, that's a
+bad thing. Yeah, so as a general rule of thumb, just avoid modifying
+multiple things in a single statement. Just make sure that every
+statement you may modify one thing at time, and you're totally safe.
+You don't have to worry about it. So here, this is questionable,
+because we're modifying both Y and X. So just in general, try
+and avoid doing that and it will be much cleaner, easier to ups,
+easier to debug.
+That's all right. Put them on separate lines. You want to
+set Y to the value of X first, then have a line that says Y equals
+X first. When you're showing these lines of code because you
+may be asked to read other people's code and you're going to
+bump into this sort of thing. And modern C++ plus, you know,
+doesn't try to pack everything into one line, one statement,
+one expression. It tries to be more
+sane, readable.
+Perhaps, yes.
+But if nothing else, if you forget, you can always load it up
+in the debugger, step through it, and you can see exactly what's
+happening, and that's often an effective way not only to, you
+know, debug code if you want to try and understand what's going
+on, but also to learn the language, you know, to just write things
+and say, oh, what is happening here.
+Right.
+So after that, we now have another type of control flow statement
+that Kate didn't mention. It's called a switch. So a switch
+looks at the X or looks at whatever expression it's given, and
+it takes its value and it has different cases that it can do
+for each of the values. So, for example, here, if X is 4, we'll
+enter this case. If X is 5, we'll do this case and so on.
+So X is 6, so we're going to end up jumping into this case 6
+and, indeed, then we'll see in the output window, we've printed
+X as 6.
+If X was none of those values, like if X had a value of, say,
+20, we would enter what's called the default case and so here,
+we would have printed out that it's, you know, it's not one of
+those values. You don't have to have a default case, in which
+case if it doesn't match any of the existing cases, it will just
+skip over the whole switch statement. It won't do anything.
+So that's not an error.
+So you could have built this out of a whole pile of ifs?
+You could have, yes.
+But when you use a switch statement, you're sort of telling
+the people who read your code, I'm really only expecting one
+of these things to happen. So even though you see several ifs
+in a row, I'm really just trying to figure out one thing to do,
+whereas normally, when you see five ifs in a row, anywhere from
+zero to five of those things could actually happen. The case
+statement, switch statement makes it clearer your intent.
+Again, if you don't want to learn a switch statement on day one,
+just use a bunch of ifs and later you can start using switches.
+So then finally, we have... this is not a control flow statement.
+It's just another form of expression is this funny question mark
+thingy, as a former colleague of mine referred to it.
+And so this is called a conditional expression, and what it does
+is it has three parts. This first part here is a condition.
+So it will test this condition, and it will say, oh, you know,
+is this true or is it false? So in this case, the debugger helpfully
+tells us, hey, this is true.
+If it's true, then it will evaluate this middle piece, the piece
+between the question mark and the colon, and it will yield that result.
+If it's false, it will do this 10 piece here, or the piece after
+the colon. So if we step over, we'll see that X indeed gets the
+value of 5, because Y is greater than 5 was true.
+
+
+---
+
+#### Module 4 Functions and Objects   Introducing Functions   Introduction to Functions
+
+# Introduction to Functions
+
+Functions are a component of a programming language that permit you to break down the behavior of an 
+application into discreet pieces of functionality, hence the name function.  A function is essentially 
+a block of C++ code that you give a name and then call from other locations in your application, when 
+you want the computer to perform the instructions contained in that function.
+
+You create a function by defining it.  The function definition may contain a return type, a function name, 
+parameters to accept incoming arguments, and finally a body which contains the code that will execute as 
+part of that function.  Functions may or may not return a value back to the caller and they may or may 
+not accept arguments passed in to the function.
+
+When you move into more advanced C++ programming, you can also overload functions.  This refers to the 
+practice of using the same function name to refer to multiple functions that perform different actions.  
+Why would you do this?  Consider a simple scenario where you want to perform addition on some values so 
+you create a function called Sum().  You could overload Sum() by creating variants such as:
+
+```c++
+int Sum(int x, int y)
+{
+     return x + y;
+}
+
+int Sum(int x, int y, int z)
+{
+     return x + y + z;
+}
+```
+
+The compiler will know which function to call, based on the number of arguments passed in.
+
+
+I've referred to functions a couple times. Functions are not
+the real building blocks of C++.
+That honor goes to classes and objects. But they are the building
+blocks of C and C++ builds on that.
+You know, anytime you've got 20 lines of code to do something,
+add up all the items in an order and calculate the sales tax,
+you shouldn't just sort of copy and paste those 20 lines of code
+if you need them again later in your program. You should wrap
+them up and give them a name, and the kids these days, Agile
+kids and all that, will have to go around saying don't repeat
+yourself and having a function is a good example of being dry,
+of saying I'm not going to copy and paste these lines of code.
+I'm going to put them in a function. The nice thing about putting
+something in a function is it gives it a name. Now, anyone who's
+reading it can say it calculates total and sales tax. I know
+what this code does, because it's got a label on it. Unlike a
+comment, which will probably end up being a lie later. And my
+favorite kind of function, of course, are the ones that I don't
+have to write because they came in a library and someone else
+took care of them for me.
+Just as variables are strongly typed, functions are strongly typed.
+They have a return type, which is a lot like the type of a variable.
+That's one of the places where void comes in. Some languages
+have something like a sub routine where it goes off and does
+something but doesn't return a value. In C++, that's a function
+that returns void. And we just call them all functions.
+They're also typed in the sense of what you pass to them.
+If I want to write a function that takes a number and does something
+to it, well, it takes a number. An integer, to be specific, or
+a double, and it's not appropriate to give it a string or some
+other type.
+Once you get into functions having the strongly typed capabilities,
+you also get into the possibility that you can actually have
+two functions with the same name as long as the compiler can
+tell them apart. One way the compiler can tell them apart is
+if they take a different number of parameters.
+In theory, compiler can also tell them apart if they take different
+types of parameters, but because the compiler loves to do conversions
+for you, they may not be as different as you think. But a different
+number of parameters is a great way to tell functions apart.
+So if you want to use a function, you have to tell the compiler
+it exists. You can either do that by giving the compiler all
+the code for the function to compile, or as you'll see shortly,
+by just making it a promise that you keep later.
+
+---
+
+#### Module 4 Functions and Objects   Introducing Functions   Function Prototypes
