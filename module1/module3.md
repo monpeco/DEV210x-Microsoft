@@ -279,3 +279,167 @@ https://youtu.be/SBa_3u9Ur08
 ---
 
 #### Module 3 Control Statements   Repetition Statements   Introduction
+
+C++ provides a number of standard constructs known as loops that you can use to implement iteration logic.  
+If you are coming from other programming languages, you might recognize for loops, while loops, and do loops.  
+C++ supports all three of these iteration statements.
+
+The ability to repeat a series of statements is a core requirement of most application code.  You might need 
+to iterate over a series of items in an array or perhaps you need to count the number of characters in a 
+string or the number of words in a document.   Repetition, through the use of loops, is the way in which you 
+achieve these operations.
+
+---
+
+#### Module 3 Control Statements   Repetition Statements   for Loops
+
+# for Loops
+
+The for loop executes a block of code repeatedly until the specified expression evaluates to false. You can 
+define a for loop as follows.
+
+```c++
+for ([initializer(s)]; [condition]; [iterator]) 
+{
+   // code to repeat goes here
+}
+```
+
+The [initializer(s)] portion is used to initialize a value, or values, as a counter for the loop. On each 
+iteration, the loop checks that the value of the counter is within the range to execute the for loop, 
+specified in the [condition] portion., and if so, execute the body of the loop.   At then end of each 
+loop iteration, the [iterator] section is responsible for incrementing the loop counter.
+
+The following code example shows how to use a for loop to execute a code block 10 times.
+
+```c++
+//for Loop
+for (int i = 0 ; i < 10; i++) 
+{
+    // Code to execute.
+}
+```
+
+In this example, i = 0; is the initializer, i < 10; is the condition, and i++ is the iterator. 
+
+---
+
+#### Module 3 Control Statements   Repetition Statements   while Loops
+
+# while Loops
+
+A while loop enables you to execute a block of code while a given condition is true. For example, 
+you can use a while loop to process user input until the user indicates that they have no more 
+data to enter.  The loop can continue to prompt the user until they decide to end the interaction 
+by entering a sentinel value.   The sentinel value is responsible for ending the loop.
+
+The following code example shows how to use a while loop.
+
+```c++
+//while Loop
+
+string response;
+cout << "Enter menu choice " << endl << "More" << endl << "Quit" << endl;
+cin >> response;
+
+    while (response != "Quit")
+    {
+        // Code to execute if Quit is not entered
+
+        // Prompt user again with menu choices until Quit is entered
+        cout << "Enter menu choice " << endl << "More" << endl << "Quit" << endl;
+        cin >> response;
+    }
+```
+
+It's imperative to include the prompt again, inside the loop braces.  Failure to put this into 
+the loop body will result in an infinite loop because the sentinel value can never be changed.
+
+
+---
+
+#### Module 3 Control Statements   Repetition Statements   do Loops
+
+# do Loops
+
+A do loop, sometimes also referred to as a do...while loop, is very similar to a while loop, with the 
+exception that a do loop will always execute the body of the loop at least once.  In a while loop, if 
+the condition is false from the start, the body of the loop will never execute. 
+
+You might want to use a do loop if you know that the code will only execute in response to a user 
+prompt for data. In this scenario, you know that the application will need to process at least one 
+piece of data, and can therefore use a do loop.
+
+The following code example shows the use of a do loop.
+
+```c++
+//do Loop
+
+string response;
+
+do
+{        
+     cout << "Enter menu choice " << endl << "More" << endl << "Quit" << endl;
+     cin >> response;
+
+     // Process the data.
+
+} while (response != "Quit");
+```
+
+A couple of aspects to note about this loop.  First of all, the  response variable is declared outside 
+of the loop.  This is important due to scope resolution requirements.  If you declare the variable 
+inside the loop, then the `while(response != "Quit")` portion will not "see" the response variable.
+
+Second, note that in comparison with the while loop, the prompt only needs to be placed inside the loop 
+body and is not required ahead of the loop.  This is possible because the do loop executes the contents 
+of the loop at least once due to the condition check being at the end of the loop.
+
+Third, notice the semicolon at the end of the loop.  This is required in the do loop and not in the 
+while or for loop.
+
+
+---
+
+#### Module 3 Control Statements   Repetition Statements   Nesting Loops
+
+# Nesting Loops
+
+Nesting of loops is possible in C++.  The most common is to nest for loops.  An example of nesting a for 
+loop might be used for games, such as dealing four hands to card players from a deck of 52.  Your outer 
+loop would count from 0 to 51 for the total number of cards in the deck and the inner loop would count 
+from 0 to 3 to represent the 4 hands being dealt.   Of course, if you aren't dealing the entire 52 cards, 
+you can change the outer loop counter to represent that fact.
+
+The following code example shows nesting for loops to output a chess or checkerboard representation using 
+the characters X and O.
+
+```c++
+bool alternate = true;
+
+for (int x = 0; x < 8; x++)
+{
+    for (int y = 0; y < 4; y++)
+    {
+        if (alternate)
+        {
+            cout << "X ";
+            cout << "O ";
+
+        }
+        else
+        {
+            cout << "O ";
+            cout << "X ";
+
+        }
+    }
+    alternate = !alternate;
+
+    cout << endl;
+}
+```
+
+---
+
+#### Module 3 Control Statements   Repetition Statements   Flow Control Demo
