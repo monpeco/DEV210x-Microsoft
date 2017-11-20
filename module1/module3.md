@@ -757,6 +757,10 @@ int Sum(int x, int y, int z)
 
 The compiler will know which function to call, based on the number of arguments passed in.
 
+# Introducing Functions
+
+https://youtu.be/xq7rL-YsiFk
+
 
 I've referred to functions a couple times. Functions are not
 the real building blocks of C++.
