@@ -276,6 +276,98 @@ i > j ? i : **j** where j is greater than i, then the bold value is selected
 
 https://youtu.be/SBa_3u9Ur08
 
+
+So let's start of flow of control and, specifically, with two
+keywords in C++ called if and for.
+You know, this is standard
+for any application that you're going
+to write, that you're going
+to have decisions to make. If you're
+writing a game, you need
+to say, well, if the characters
+hit points have gone down below
+zero, then draw him falling down
+dead, that kind of thing.
+And you syntax in C++ is lower case
+if, round brackets or parenthesis.
+They're not optional. And then
+what it is that your condition
+is going to be based on.
+After the if, you can have an open
+brace, what to do if that
+condition works out true,
+and a close brace.
+After the close brace, you may have
+an else, which another all
+lower case keyword, an open brace,
+what to do if the condition
+is not true, and then a close
+brace. You don't have to have
+an else, so it could be like, you know,
+if he's dead, he falls down.
+If he's, you know... and otherwise,
+we're just going to carry
+on with the rest of the program,
+but you may have a one or the
+other situation.
+The if is the real building block
+of most of the decisions in
+your application. When you need to
+decide which course of action
+to take.
+The other building block is to do
+something over and over again
+and, you know, you'll hear this
+all day. There's lots of ways
+to do this. There's at least three
+ways. No, at least four ways
+to do something over and over again.
+We'll start with the four
+loop that you see here on the screen.
+This is a little tricky
+for people to learn at first so
+I want to kind of dissect it
+with you for a moment before
+you see it in a demo.
+The keyword is for, again all lower
+case. All C++ keywords are
+always lower case.
+The round brackets, not optional.
+And then there are three pieces
+in there, and those three pieces
+have semicolons between them.
+A really popular beginner mistake
+is to put commas between them,
+and that is not an error that you
+think... it's a mistake, but
+it's not an error, because a comma is a
+legitimate piece of C++ punctuation.
+You just don't get the result that
+you want. So very important
+to remember to use semicolons
+between these three pieces.
+The first piece is how to get started.
+The second piece is how
+to know whether you're done yet
+or not, and the last piece is
+how to move on so that you're going
+to go through the loop and
+do something over and over again.
+And just as with the if, you use
+braces around the stuff you
+want to do each time
+through the for.
+And then we have a while, which
+is essentially just like a for,
+but it only has the condition
+part. So it's up to you to do
+the initialization and also to
+do whatever moves you want to
+it being the next time around through
+the loop. Other than that,
+while and for have no significant difference,
+only a syntax difference.
+
 ---
 
 #### Module 3 Control Statements   Repetition Statements   Introduction

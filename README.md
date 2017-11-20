@@ -8,3 +8,5 @@ While there are no specific course materials for these first four modules, you c
 * [The C++ Standard](https://isocpp.org/)
 * [Compilers and Publications](https://isocpp.org/get-started)
 * [Microsoft's Visual C++ Team Blog](https://blogs.msdn.microsoft.com/vcblog/)
+
+https://github.com/nixawk/awesome-courses
