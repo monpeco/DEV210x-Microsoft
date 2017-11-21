@@ -977,6 +977,225 @@ identifier across multiple threads in the same application.   This is part of th
 
 #### Module 4 Functions and Objects   Introducing Functions   Functions Demo
 
+Functions Demo
+
+https://youtu.be/VQDFbqE2k0c
+
+So let's write some functions.
+All right.
+So what we have here is we have this source file. It's just
+called utilities.cpp, and it has a function called addtwo, and
+it takes an integer. So this is a parameter. And then it takes
+the value that we pass into the function, add 2 to it, and return
+the result.
+So you'll notice that there's no main function here, and as we
+said before, we need to have a main function for every console application.
+Our main function is in a different file called functions.cpp.
+Now, as Kate said, you need to tell the compiler that something
+exists before you use it. And we do that by using what's called
+a declaration. So this here is a declaration. You'll see that
+it has no code, you know. There's in executable code associated
+with it. We're just saying there is a function named addtwo that
+returns an int and takes a one int parameter.
+This has to match exactly what is in utilities.cpp
+and then in main, we can call it as if it was defined here in
+this file.
+So I'm going to run this.
+I'm going to build it first and then I'm going to run it.
+And so you can see that, you know, we have a local variable I,
+initialized to four. We call the addtwo function so I'm actually
+going to do what's called stepping into, which will take us to
+that function that we're calling here. So you can see the control
+has entered this function. We can see the value 4 is here, and
+then we're going to return I plus 2,
+and we're going to initialize J with that value. Now, also important
+on the autos window, you can actually see the debugger will tell
+you, ah, that last function you called, it returned to the value
+6, which is really useful, especially if you're calling a function
+and ignoring a result most of the time, but you really want to
+know, when debugging, what the result was. So we can step over
+this and we can see the J now has a value of 6. Now, there's
+a couple of important things to note here. The first is related
+to scope. As we said, the scope of I, like this I here, is constrained
+from its declaration here until the end of the block in which
+it's declared. Similarly, this int I here is completely unrelated.
+So they're two completely different variables.
+And so we can call, for example, we can call addtwo with the
+value of variable J. So we can pass 6 in and you can see that,
+you know, the value of I here in this function is now 6.
+Now, there's something interesting here. We're not using the
+result of this function call. So we're just throwing it away.
+And we can see that after the function return, J still has a
+value of 6, even though the function returned 8. So C++ is by
+default a pass-by value language. And we'll see a lot more about
+this in the next section. But basically, any time you call a
+function that has, like, an int parameter, a copy of what you're
+passing in is passed. So there's no...
+it's not like it's a reference to J and so that J is actually
+going to be modified by the function. We'll see how we can do
+that later, but this is the important thing.
+So then here, we can see again that we're going to call addtwo
+with J and assign the result back to J.
+I see this a lot when people are doing string manipulations
+in a variety of language, not just C++.
+They call some function that, you know, replaces all the spaces
+with dots. And then they say, why aren't the spaces replaced
+with dots? We say because the changed string was returned.
+Yes.
+And the same thing here. The changed integer is returned, but
+the one you passed in is left untouched. And we can tell that
+by just looking at the signature. Function takes an integer.
+We know that's a copy. We know it doesn't change it. By the
+time we're done today, you'll also know how to do that. But for
+today, it's good to know that's a thing that happens. You know,
+it doesn't necessarily change what it's given. It might return
+the new value as this one does.
+Yep. So if we step over the
+statement here, we'll end up calling the function and we'll see
+that J now has the value of 8.
+So what happens if we don't tell the compiler about this function?
+So we can comment it out, and you'll see this is the form of
+comments in C++. We can use this double forward slashes at the
+beginning of the line or, alternatively, we can also use...
+there's an older form of comment from C, and the advantage of
+this one is you can have... it can span multiple lines.
+But generally, we try to use the single line comment.
+They're easier to work with. So if we comment it out, we'll see
+that the compiler is going to complain.
+It's going to complain that all of these uses of addtwo, it has
+no idea what addtwo is. It my say, oh, well, but we've defined
+it over here so we do know where it is. But every CPP file is
+compiled individually. So there's no communication between the files.
+There's no way to tell the compiler, oh, well, the way to tell
+the compiler it's in another file is through this declaration.
+It's to declare it. So you don't have to define it in each
+file, but you do have to declare it.
+Yep.
+Can you make the error happen again?
+I can, yes.
+But I thought I'd show people the secret code that the error
+number starts with the letter C.
+Yes.
+So our compiler, the visual C++ compiler, every error message
+and every warning starts with a C. And it's got a four-digit
+code, and this is really handy because then you can go and search
+Bing for, you know, that error code and get a lot of information
+about most of the warnings and errors that we report. So it's
+really helpful if you're like I have no idea what this error
+means and you can often go and find it. If not on MSDN, then
+on stack overflow and other places where people have run into
+similar issues, you can often find solutions.
+But the important thing here is that it starts with a C. So that
+means it's from the compiler.
+So if we build again and we put the declaration back, the error
+goes away.
+Recall that the compiler isn't the only piece that we're running, though.
+Once we've compiled the code, each CPP file turns into what's
+called an object file with an OBJ extension. Then the compiler
+feeds all these objects into a tool called the linker. And the
+linker is a bit surlier than the compiler. He's very grumpy
+much of the time.
+So basically, what this declaration says is hey, if I use this,
+I promise I'm going to go declare it, you know, somewhere else
+in this file over here. So what happens if we don't declare it?
+So here I've removed, you know, this definition from this file.
+And you'll see that we have a new error now, and it starts with
+LNK, and these errors are all from the linker. So the LNK is
+for linker. And it's saying that there's an unresolved external symbol.
+So an external... so what this means is, hey, I really needed
+this addtwo thing. You can see he's given it this nice declaration
+here so it tells you oh, it's the addtwo that takes the integer
+and returns an integer so you know which overload, if you have overloads.
+And it's saying, oh, well, you promised this was going to be
+there and it's not there. So this almost always means that, hey,
+well, this always means that you've forgotten to link in some object.
+You've forgotten to define some function.
+Sometimes you forgot to add a file to your Visual Studio project.
+That could be it.
+Or you just forget to write the function. You made the promise
+and you forgot to keep it. That's a popular one.
+Yep. And so related to that, you know, if we were to change
+this parameter type in the declaration only to be a double, you'll
+see that the linker also reports an error. Now, we still have
+addtwo defined, but it's the wrong addtwo. It has the wrong
+parameter types. So, you know, this can be something to look
+out for. Just make sure that your parameter types match, make
+sure that you've actually defined everything correctly, make
+sure you have all the correct files in your solution.
+I find that people who want to argue with error messages will
+often be happier had they known what the error message was.
+So essentially, they'll say how dare the linker be angry.
+Look, I've clearly made the compiler happy. You know, I mean,
+that's not what they're saying with their mouth, but that's what
+they're telling me. They'll say I declared the function. I made
+the promise to the compiler and I made the compiler happy, but
+I didn't keep the promise so now why am I getting an error message?
+Yep.
+You didn't keep the promise. Your error message is from the linker.
+And the other way around as well, where I wrote this function
+so why am I getting the compiler message when I try to call it?
+Because you didn't declare it to the compiler.
+Um-hmm.
+So knowing where those error messages come from can really
+take some of the frustration away of trying to understand what
+takes to make a program work.
+And it's important to note that when you're writing your first
+programs, and you run into errors and you don't understand them,
+it's probably not a compiler or linker bug so the compiler is software.
+It has bugs, like we're not going to shy away from that.
+But generally, you know, writing your first programs, you're
+not going to run into them. Like I know on stack overflow, when
+we answer questions, there are many people who say, ah, this
+is clearly a bug in the compiler. My code is perfect.
+Indeed, there's little errors or things like that.
+Absolutely.
+Yeah.
+I almost never think it's the compiler. And every once in
+a while, I'll be running maybe a community technology preview,
+something like that, and I'll reach out to someone I know and
+say what am I doing wrong? They'll say oh, it's not you.
+It's actually a compiler bug in these really, really early bits
+that aren't ready for public consumption. And I'm so surprised,
+because it's never the compiler. Experienced people never think
+it's the compiler.
+Right. So I'm going to show a slightly different demo. So to
+start off with, it would be really inconvenient if we had to
+declare functions in every file that we wanted to use them in.
+Especially for common functions like, like this one, you know,
+similar utility functions. We don't want to have to copy this
+over and over and over again, because that violates the don't
+repeat yourself principle that we said we don't want to violate.
+So what we can do,
+I think... sorry. I have...
+yes, here we go.
+You're in a maze of twisty projects.
+Yes, we have a few projects open. So what you can do is use
+what's called a header file.
+And a header file is... it's a source file that generally doesn't
+have a lot of function definitions, though it may. We'll get
+into some advanced scenarios later. But generally, it just has
+a bunch of declarations and things that can be reused in every file.
+And then in our source files, we use that include directive that
+we showed off in the last module to say, I want you to include that.
+So what happens is the preprocessor, which is that first step
+that we were talking about, will actually take everything from utilities.h.
+so it will take this one line, basically, and it will copy all...
+it will be as if we copied all of the contents into this file.
+So that way, we can include it here. We can include it, you
+know, where we actually define the function, and this enables
+us to basically reuse our declarations so we can declare everything
+in one place and define it in one place.
+Then if you were to need to change it, to make it take a double
+or any other kind of change like maybe if you have a point to
+[Indiscernible]
+who has a naming convention and makes you come along and change
+names of all your functions, which I think has happened to everybody
+at some point, you would only need to change it in the header
+file, and all of the places that were included in the header
+file would get that new information.
+Yep.
+
+
 ---
 
 #### Module 4 Functions and Objects   Introducing Objects (Classes)   Introduction
