@@ -221,3 +221,111 @@ check out the CPP file and other developers who wanted to change
 something in the declaration of the class wouldn't need to care
 about what I had done.
 Yep.
+
+---
+
+#### Module 4 Functions and Objects   Const Objects   Introducing Const Objects
+
+# Introducing Const Objects
+
+So finally we're going to talk a bit about again about
+the const keyword and how it applies to objects.
+As we saw before on the previous section, we can const qualify integers.
+So here the int Y is cons qualified. We can't make changes to it.
+Similarly we can do the same thing with rectangles or any class type.
+Here we have two rectangles. One is a mutable rectangle. We can
+change it. It's not const qualified and the other is immutable
+const qualified and we're not able to change it.
+So this is simple enough. But we'll quickly run into problems.
+So, for example, if we try to call the get area function, it's
+not going to work. The compiler will actually complain and we'll
+see it in a moment in a demo, I think.
+And the reason for this is that so at first it might seem like
+this doesn't make sense. Get area doesn't change the rectangle
+at all only the resize function changes it but get area only
+accesses the members. So the problem is the compiler doesn't
+know that. We actually have to tell the compiler no, this member
+function is not going to change the object. And we do that by
+adding a const qualifier to the member function. So just like
+you can const qualify objects like ints and rectangles you can
+const qualify
+member functions, and what this does is it says I promise that
+this member function isn't going to make any changes to any of
+the members of the class. So, for example,
+here we've made get area const because it doesn't change anything,
+it just reads.
+Once we make this change now we can call it get area, no problem.
+
+---
+
+#### Module 4 Functions and Objects   Const Objects   Constant Objects Demo
+
+# Constant Objects Demo
+
+I may have said we're going to demo something we didn't have
+a demo prepared for.
+So this is a smaller version of the same application.
+And what I'm going to do is first run it to make sure that it
+will run, build and be happy.
+And I've just put the break point on the very end because I don't
+actually care about the run, I just want to prove that it will run.
+But if I take these three rectangles and I decide to make this
+one value into a const rectangle
+I can put the const here or I can say const rectangle value,
+either way.
+Immediately these red wiggles appeared.
+And the hover over error is not that great.
+It says the object has type qualifiers not compatible with member function.
+Let's do a build and look at the output.
+That's a little bit better.
+Not super great. You can see, though, that the word const is
+in the air. And that's really the key.
+I'm taking value.area and it's saying wait
+I bet you area changes value.
+And you said that it was const.
+Now, if we look at the code for area, you can see that it doesn't
+change the value in any way. It doesn't change the width.
+Doesn't change the height. So what the heck?
+But as you saw, the implementation for this function might not
+even be in the header file.
+And there has to be a way to tell the compiler you know what
+area does not change any of the member variables of rectangle.
+And that way is the const keyword.
+If I had the const keyword right here...
+why is he not happy?
+Save, maybe.
+There we go.
+Temporary thing from the... now, these wiggles have gone away.
+Now it's okay to call area on value again.
+Now, I'm not calling get width and get height right now so let's
+do that.
+It's called values width, VW is equal to value.get height.
+No, not if we want the width. Get width.
+Same thing. I get an error.
+Because get width is not marked as const either. So we go in
+and we say that's fine. Getting the width of a
+rectangle doesn't change any of the values. Getting the height doesn't.
+Now, if I build it succeeds.
+This is why it's so important to think about const at the beginning.
+Imagine if rectangle was an enormous class and no one had ever
+made a const rectangle and then they suddenly had to go back
+in and mark all these methods as being const, they'd get irritated,
+and they really shouldn't. When you write rectangle for the first
+time you go to save I'm going to return the width. At that moment
+you should be thinking and I know that doesn't change the object
+so I'm going to put this promise in here. Just in case anyone
+ever wants to make const rectangles, going back and adding it
+later can be really irritating. You want to do it every chance
+you get.
+Of course you can't do it here.
+Constructor changes the object, it initializes it.
+This version of rectangle doesn't have a resize, but resize isn't
+const either because it changes width and height.
+If we tried to make it const the compiler would not be happy
+with us.
+That's right. You can't just go around lying to the compiler,
+it will catch you.
+Thinking about const from the very beginning, that's absolutely
+vital to writing good classes well encapsulated code.
+
+
