@@ -387,3 +387,262 @@ C and C++ with Visual Studio: https://aka.ms/edx-dev210.2x-vs02
 ---
 
 #### Module One Pointers   Reference Types   Demo: Reference Types
+
+# Reference Types Demo
+
+>> In this demo,
+we're gonna take a look at the use of reference types.
+We have this demo divided up into two segments.
+The first one, we'll focus strictly on
+just working with a simple reference type and
+how we can use it as a reference to a standard variable.
+And then in the second section, we'll take a look at how we use
+references when we're passing variables into functions.
+So let's take a look at the first part of the demo where
+we're declaring a simple int variable called num and
+assigning it a value of three.
+So this is just common for what we've been doing for
+all of our demos so far in this class.
+And second, we create a reference type called refNum and
+we assign the variable num to that reference type.
+Now, once again,
+we are overloading the use of an operator in C++ and
+in this case, we're overloading the use of the ampersand.
+When we see it on this side of an equal or
+an assignment statement.
+This basically tells us that what we are referring to here
+now is a reference type as opposed to
+the address of operator.
+Which we typically would find over here on the right-hand side
+of the assignment operator.
+So all we're doing in this particular instance is we're
+creating a reference type.
+Which will basically be an alias for an int data type and
+we're assigning num to that.
+What we will do once we have the assignment complete is we will
+use a couple of output statements and
+we will indicate what num contains.
+And then we will output the value for the variable num.
+And then we will also put the value contained in
+the variable refNum.
+Now those will be the same and
+you'll see that in a moment when we execute the code.
+Then, what we do is, we increment refNum.
+So, we're incrementing the reference type itself as opposed
+to num, and when we do the output statements,
+we'll see that the value in num,
+and refNum has been incremented the same.
+So basically, we're impacting the same value.
+And just to prove that, we'll come down, in the next statement
+here and we'll actually increment num by one.
+And then output the two values here and
+you'll be able to see that those as well indicate the same value
+after we've done the incrementing.
+And then finally, we'll output the memory address of refNum and
+num so that we can see that they are equal.
+So they are pointing to the same identity or
+the same actual value in the memory location.
+And let's not be confused about the use of the ampersand here.
+This is the address of operator in this instance, as opposed
+to the reference operator up here in this instance.
+So let's execute this code and see what the output looks like.
+So we CTRL + F5, so that our command window or
+our console window remains open.
+We've made changes or I've made changes to the codes since it's
+been built, so I will rebuild it again.
+And then we're gonna see that our console window pops open.
+I will move it just to the side a bit, so
+we can see the lines of code and how they pertain to the output.
+So our first output lines is num contains and
+it says value three, which is what we assigned up here.
+And then we also say refNum contains and
+we see that it contains the value three.
+We incremented refNum here, so now refNum should equal four.
+And because refNum is an alias to num, it should also equal
+four and it does here in both of this statement.
+Incrementing num by one makes it five, but
+also makes refNum five.
+And we prove that with the two output statements.
+And then finally, when we output the memory address of the two,
+we see that refNum is located at 0018FA98.
+And num is also located at that same memory address.
+This proves that refNum, the refNum type is an alias for
+the type num and that they both have the same identity.
+So let's close our console window for a moment.
+Now what we're gonna do is go in and take a look at a more
+common use of the reference type if you will.
+So in this case, what I wanna do is I am going to comment out
+these lines because I no longer require them for the time being.
+If you're using Visual Studio, there's a shortcut
+key combination that works very nicely for
+commenting out a section of code that you don't want to have
+execute if you're trying to do debugging.
+In my case, I'm demonstrating some other code and I don't want
+this code to execute and clutter up my screen.
+So the Ctrl + K and C provides a comment shortcut and
+it comments all of that code out for me.
+Equally well because I have this code surrounded with
+the older C style comments I wanna use this code.
+So I will simply highlight that and use the keyboard shortcut of
+Ctrl + KU, which means uncomment.
+So now this code has been uncommented
+with the exception of one line.
+We'll take a look at,
+I'll change these in a moment because I wanna demonstrate
+passing by value and passing by reference.
+And we'll do those in a moment.
+At the top of my screen, so for
+those of you who wanna grab this code a little bit later on and
+paste it in or look at it in your own code editor.
+Whatever it is that you might be using, I'm utilizing
+function prototypes up here at the top of my code file.
+Now typically, you'll find these in header files, but
+rather than complicating the demo code here with
+multiple files or header files and an implementation file.
+I've just simply included these function prototypes at the top
+up here for the time being.
+Just so that C++ doesn't complain when I try to use
+the functions a little bit later on.
+So let's scroll down and take a look at what we're doing.
+The first thing I wanna do is actually demonstrate
+the passByValue which is the default mechanism for
+passing values to a function.
+And so what we're doing in this code is we have again,
+our standard num variable declared of type int and
+it contains a value of 3.
+And then we're going to use some output statements to indicate in
+the console window which method or which function that
+we're actually in as the code executes.
+And then what the value of the variable is within
+that function as we execute the code.
+So what's gonna take place when we execute this,
+when we start running the application.
+Is that it will print out that we were in the main function
+which we will be cuzs if we scroll up,
+we'll be in the function main here.
+And so it says we're in main and it will output the value
+of num and in which this case is going to be three.
+Cuz we haven't done anything with it yet, but
+then we will call the function passByValue.
+And we will pass in num as the variable coming into
+passByValue.
+Now here is our passByValue function.
+And you can see that it's accepting one integer type
+variable.
+And in this case, I've used num1 just so
+that we don't confuse this variable num which
+is the argument that's being passed into this parameter num1.
+I just have a tendency to do that in my code.
+I don't like to use the same variable names here in my
+parameter list as I do for the values that are being passed in.
+It's just my personal coding convention.
+So within the passByValue function, we will output this
+first line that indicates that we're actually in that function.
+And then we will print out what the value of num1 is,
+in which case we're going to use,
+as we see num1 here, the value that's passed in.
+That will be three because we are passing in the value three
+through the num variable up here in the function call.
+Once we've output the value three,
+then what we're going to do is increment num1.
+Now the way that pretty much all programming languages work
+is that num1 has been declared within the scope of this
+functions.
+So num1 is a local variable to this function and
+when we make the change to num1 and output the value,
+you'll see that the value will become four.
+But when this function call is finished,
+the instructions gets passed back up to where we left off.
+And we will print out one final statement that says we are back
+in main and the value of num is.
+And in this case,
+we'll see that the value of num has been unchanged,
+because this is a pass by value mechanism.
+So let's go ahead and run that code and
+we will see what that looks like.
+So Ctrl + F5, so that we'll keep the console window open,
+yes to build the application.
+And then you can see as we take a look at what
+takes place here in our code.
+It says we are in main,
+the value of num is three, we call pass by value.
+So we come down here and we'll output in pass by value.
+The value of num1 is 3 which is the value that we did
+in the pass in here.
+And then we do the increment statement.
+And then we output what num1 is, in this case,
+it indicates num1 is now 4.
+Once that function concludes its execution,
+we step back into main.
+And then we print out,
+we're back in main and the value of num is 3.
+So this num1++ did not impact num at all.
+But what if we wanted it to?
+What if the whole purpose of our program was to actually
+make that change to the num variable?
+And we wanted that to be reflected and
+stored in the memory location?
+Well, what we have to do is we have to pass
+by reference rather than by value.
+And this is where that reference type comes into play.
+So what I've done here is I've just commented out the call
+passByValue and uncommented the call for passByRef.
+Now if we look at the function prototype a little more closely
+up here for passByRef,
+we see that we are passing in an int type.
+But because we're utilizing this ampersand character,
+it says in the function prototype that it is
+expecting a reference type to be passed in.
+That's the purpose of the ampersand.
+PassByValue did not have that, so passByValue simply says
+I expected an int variable, that's all it's looking for.
+PassByRef is looking for a reference type to a type of int.
+So when we come back down here and
+we see that we're going to call pass ByRef and
+we're gonna send num to it, here is our passByRef implementation.
+So, our data type of int and here is the ref type,
+in this case, num1, that we are passing in.
+But it will receive num as the argument,
+it will cast it to a ref type or
+actually when we take a look at it from this perspective.
+The num1 reference type becomes an alias for num, so
+it's not quite exactly the same as saying that we're passing num
+as a reference to this.
+We are actually declaring an alias to the num variable.
+So we will do the same thing once we're in this function.
+That we were in the function, we will output what
+the value of num1 is as to what was passed in.
+We will modify it, we'll output what that value now is and
+then come back in the main and output the value again.
+In this case, num should change because we're passing by
+reference, so let's run the code and see what happens.
+Yes to build it.
+So again, similar outputs here in main,
+the value of num is 3, which is what it should be in main.
+>> And when we pass or when we call in passByRef,
+we are in that function and the value of num1 is.
+And in this case, we're saying num1 which is the reference
+type, we've passed in num to the function.
+We've created the reference type num1 to be an alias to it.
+Which allows us to gain access to the value 3,
+which is what is existing inside num at this time.
+Incremented by 1 with the num1++ statement.
+So we're not calling num++, we're calling num1++.
+Num1 is now 4.
+So we output here and then when we return to our main function,
+we see that we are back in the main and
+the value of num is now 4.
+Again, the reason being is because we passed in num,
+it became reference by num1 which is a reference type or
+an alias for it.
+Therefore, the num1++ statement not only impacted num1,
+but it also impacted num
+because of the way that reference variable works.
+And therefore, the output was four.
+So that's a quick demo on references and
+how we would make use of them within functions.
+
+
+---
+
+#### Module One Pointers   Managing Memory in C++   Introducing Memory Management in C++
