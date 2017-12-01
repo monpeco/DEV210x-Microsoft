@@ -142,3 +142,87 @@ allocated during runtime of the application.
 ---
 
 #### Module One Pointers   Pointers   Demo: Simple Pointers
+
+# Simple Pointers Demo
+
+TODO: missing video
+
+>> Let’s take a closer look at how pointers work and better understand the pointer operator,
+the address of operator, and the dereference operator.
+If we were able to zoom in on the memory in the computer and see how it is addressable,
+ie it uses memory addresses for access to the memory segments for storing and retrieving
+values, we might zoom in on a specific part and see the actual addresses.
+In this case, we are using generic addresses because each computer will have differing
+addressing structures depending on hardware specifics that we don’t go into here.
+Just note that they are sequential and are typically denoted in hexadecimal format.
+As you can see from the first occupied memory slot, the data stored there is binary data.
+Even if you place a text value in memory, the computer will store it in binary format.
+Now, let’s assume that we have the following line of code, (first animation).
+We create a variable called num, of type int, and store the value 3 in that variable.
+Recall that a variable is simply a named memory location.
+It makes it easier for us to read.
+The computer stores the value in a memory slot.
+We have no control over where, but it also returns a memory address for num so that it
+knows how to get to that value when asked.
+How can we get the address of memory where the value is stored?
+We use the pointer operator, which is the asterisk.
+So if we write this line of code < cue next animation #2 >, we create a pointer variable
+called pNum.
+It is a pointer variable because we preface it with the asterisk.
+Because we declared it as an int pointer, or a pointer to an int, the compiler knows
+to request memory large enough to store an integer value.
+On most currently systems, that is a 32-bit value.
+Also in this line of code, we make an assignment to the pNum variable.
+But what are we assigning?
+Notice the ampersand in front of num.
+This operator is known as the address of operator.
+It tells the compiler to assign the address of the num variable that we declared earlier,
+to the pointer.
+Let’s focus on this for a second because this is one key to understanding pointers.
+The ampersand is the address of operator and it gets the memory address of where the computer
+has stored the value for num.
+This is the only legal value that we can assign to pNum because pNum is a pointer to an int.
+In other words, pNum can only store the memory address of a int variable.
+Based on our pseudo memory diagram, we note that <cue animation #3 > the address of the
+value 3, hence the variable num, is 0x00017.
+Due to the assignment of this address to the pointer variable pNum, we find that &num and
+pNum contain the same value, the address of the variable num.
+If we want to see what that memory address is, we can output it to the console window.
+<cue animation #4 >. Issuing a cout statement for pNum or &num will output the value 0x00017.
+Of course if you run this code on your own computer, you will get a completely different
+memory address.
+In fact, if you try it a number of times, you should get a different memory address
+each time you run the application.
+Finally we take a look at the dereference operator.
+For example, what if want to gain access to the value stored in num?
+You might be thinking that we can simply use the num variable, and you would be correct.
+That is one method of gaining access to the value 3 that is stored in num.
+However, it we are dealing with objects, it can be more complicated because we might be
+declaring objects dynamically as the application runs and at the time you are writing the code,
+you may not have all variable names available to you.
+As a result, we can make use of the dereference operator in an assignment statement, < cue
+animation #5 >. In this line of code, we are assigning the variable contents, the value
+that is located in the memory address pointed to by pNum.
+This is sometimes considered direct access.
+It is also the cause of confusion in C and C++ programs and can result in unintentional
+assignment of values in memory.
+So, how do we know whether we are using the asterisk as a pointer operator or a dereference
+operator?
+They are both the same symbol, and in these code samples, the variable pNum is used in
+both cases.
+What is the difference?
+It’s actually quite simple.
+All you have to do is take not which side of the assignment operator that the asterisk
+is on.
+For example, in the second line of code in this animation, the asterisk is on the left
+side of the assignment where we assign the address of num to the variable pNum.
+So, left of assignment means pointer.
+In the last line of code where we assign to the variable contents, the asterisk is on
+the right side of assignment, which makes it a dereference operator.
+Keeping these two concepts in mind will help you know which purpose the asterisk is being
+used for.
+
+
+---
+
+#### Module One Pointers   Reference Types   Introducing Reference Types
