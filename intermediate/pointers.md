@@ -145,6 +145,145 @@ allocated during runtime of the application.
 
 # Simple Pointers Demo
 
+>> In this demonstration we're gonna take a look at creating
+simple pointers in C++.
+I've got Visual Studio 2015 open, and
+I have a simple C++ console based application created here.
+I've got an include statement that, basically, brings in my
+input, output, stream header file, which allows me to make
+use of my C out, or console output statements, down here.
+So, let's take a look at our application.
+The first line of code, here on line 14, is relatively simple,
+and you should be familiar with this syntax already.
+We've declared an integer type variable called num and
+we have assigned a value 3 to it.
+Next, what we've done on line 17 is we have created an integer
+pointer, or a pointer to an integer, called pNum.
+So pNum becomes a pointer object.
+And it's interesting to talk a little bit
+about the way that we declare the pointer variables,
+cuz you may see it differently in books or
+other types of documentation or material that you read.
+In this instance,
+I've actually got the asterisk right next to my data type.
+And this just simply says this is going to be a pointer to
+an integer type or pointer to int.
+But the Compiler is perfectly happy even if we add some white
+space where we can have the asterisk completely separated
+from the data type.
+Some people prefer that because they like the white space so
+that they can see the different components of what they're
+working with specifically.
+So that's permissible.
+You can actually do that.
+And others like to have their pointer variables declared in
+this manner where we've got the asterisk right next to
+the actual pointer name.
+Some people prefer it this way because they look at it from
+this perspective and say well any time I see asterisk pNum,
+I know that this is a pointer variable.
+And it's one small step to just go back and
+take a look at the data type that's been declared and
+we know that this will actually be a pointer to a type of int.
+Now the other aspect that's also important to keep in mind is
+when we declare a pointer to a specific data type,
+in this case int,
+that's the data type to which we should be assigning the value,
+or sorry, the variable that this pointer will point to.
+And in this case we're going to use the address for
+the variable num, which is an int, and that's perfectly fine.
+If we were to declare this as a pointer to a double, and
+then we attempted to assign the memory address of num to that
+pointer variable, it depends on your compiler,
+it depends on the systems that you're using.
+You may receive a warning, you may receive an error, or
+it may simply compile successfully.
+The problem is that when your application accesses that,
+you're attempting to access memory beyond the size of
+the variable to which you're pointing, if that makes sense.
+So a double takes up more memory than an int does and so
+therefore it would be attempting to access memory that would be
+in a much larger space than an integer data type would be.
+All right, so enough of that.
+Let's take a look at the next assignment line of code that
+we have here, which is assigning the address of the variable num
+to our pointer.
+So we wouldn't be able to simply say pNum equals num.
+And because when we do that,
+the compiler's gonna give us at least in Visual Studio, this
+little squiggly line that tells us that there is an error here.
+And it tells us that a value of type int cannot be assigned to
+an entity of type int, so an entity means an object.
+So it knows the difference between pNum and
+num as being two different types.
+Even though they're both gonna deal with integer data types,
+pNum is actually an object.
+And so pointers are objects in your code.
+So we have to use the address of operator or
+the address operator which is the ampersand.
+This now tells us that we will assign to pNum
+the memory address of the num variable.
+And that's perfectly legitimate, that's allowed.
+That's the value that a pointer actually stores.
+So the pointer variable is storing that memory address.
+Once we get that memory address,
+we're going to run through a couple of C out statements.
+We'll print out the value of num right here, then we will print
+out what the memory address of num is in the computer, and
+then we will also print out what value is currently stored
+in pNum.
+So let's go ahead and execute this program.
+Now I'm gonna press Ctrl+F5, which is a keyboard shortcut for
+Visual Studio.
+And when dealing with console-based applications,
+if you wanna actually see the information displayed on
+the screen, if you want the console window to remain open,
+you should use Ctrl+F5 to allow that console window to stay open
+once you've executed the program.
+Our project is out of date,
+that's because I made some changes earlier on and
+what we are dealing with here, so we need to recompile it.
+So yes, let's build the application.
+And then our console window will open up.
+And we can see that our first output statement gives
+the value of 3 which is what we assigned to num.
+Our second statement outputs the memory address of what was
+basically given to num by the operating system.
+And then we also output that same value because that is what
+pNum is actually holding,
+which is the address of the num variable.
+Now I want to run this application one more time and
+what I want you to take note of is the current value that is in
+here right now, 0018F7DC, so
+a hexadecimal version of a memory address.
+I'll press the Enter key to close my application,
+Ctrl+F5 one more time, and
+you'll notice that the memory address now is different.
+So what this is telling you is that each time your application
+runs, the operating system will assign a memory
+address that is currently available to the executing code.
+So you'll often see that memory address change on
+a regular basis.
+So that's a really quick and simple demo of simple pointers.
+Once again just declaring a simple integer variable,
+declaring a pointer variable that points to int.
+Assigning the address of our integer variable to that
+pointer, and
+then outputting the values to see how they're displayed.
+
+
+---
+
+#### Module One Pointers   Pointers   Demo: The Dereference Operator
+
+# Dereference Demo
+
+---
+
+#### Module One Pointers   Pointers   Demo: Simple Pointers
+
+# Simple Pointers Demo
+
 TODO: missing video
 
 >> Let’s take a closer look at how pointers work and better understand the pointer operator,
