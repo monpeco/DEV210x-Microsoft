@@ -278,6 +278,96 @@ then outputting the values to see how they're displayed.
 
 # Dereference Demo
 
+https://youtu.be/9_wZYfS1I_E
+
+>> In a previous demo we saw an example of using simple pointers
+in C++.
+In this demo we're gonna take that to the next step.
+We're gonna take a look at the dereference operator.
+The dereference operator uses the same symbol as
+the pointer does.
+And it's also the same symbol as the multiplication symbol used
+within C++.
+This is just an example of operator overloading
+within the language.
+And operator overloading simply means that we make the use of
+the same operator for multiple dissimilar purposes.
+So let's take a look at how we do that with this dereference
+operator demo.
+In our first line of code we're gonna declare a simple variable
+called num, which is an int type and we assign the value 3 to it.
+In the next line, this is similar to the previous
+demo on simple pointers, we simply declare a pointer to int,
+in which case we're calling it pNum.
+And we assign to it the address of the num variable.
+And then, in this line here, we will output that address
+by using the pNum variable to gain access to the value stored
+in pNum which is the address of the num variable.
+Now it's important to know here that
+we've used the asterisk up here to declare our pointer variable.
+But when utilizing that variable in an output statement, or later
+on in the program, if we're only interested in the address for
+that pointer or the content within that pointer itself,
+we don't use the asterisk.
+And the reason being is because once we include that asterisk
+with that variable name later on, so as long as it's not
+in a declaration statement, it becomes a dereference operator.
+And that's what's taking place right here in this line of code.
+So we're issuing a similar output statement as what we did
+here, with the difference that
+we've now included the asterisk in the pNum variable name.
+This now indicates to the compiler
+that *pNum is a dereference operator.
+What this will do is it will give us indirect access
+to this value which is stored in num.
+And it's indirect because it's using the address stored in
+pNum to indirectly gain access to the value
+of 3 which is stored in num.
+Finally, what we're gonna do in the demo is we're gonna take
+a look at how we can use the dereference operator
+to directly impact the value stored in another variable.
+So in this case, we will use the dereference operator here
+to assign a new value to num and the new value becomes 45.
+So once again,
+remember the dereference operator simply says,
+I want to get to the value that is being stored at
+the memory address that was declared up here.
+Once we do that, we will output the value of that num variable,
+and we're doing it through the use of the dereference operator.
+So this statement is identical to this statement here.
+And then just to prove that we have actually modified
+the underlying value in the num variable through that
+dereference operator, we will output the num variable here
+showing that the value has indeed changed.
+So let's execute the code with the Ctrl+F5 and
+we see in our first output statement.
+I'll just move this window a little bit so
+we can see the lines of code that pertain to this.
+Our first output statement said, give me the address
+that is stored in pNum which is the address of num.
+So this is the memory address in the computer currently.
+Once again, that will change for
+each execution that you do the program.
+It will typically end up with a new memory address each time.
+Then we come down here, and we use the dereference
+operator to actually print out the value that is stored
+in the memory address pointed to by pNum which is the variable
+num which is the value 3 and we see that output here.
+Finally, in the dereference operator assignment statement
+right here, we change the value
+that is stored in num to 45.
+We issue the same dereference output statement
+here as we did earlier.
+But instead of getting the value 3,
+we now get the value 45 showing that we have changed
+the underlying value that pNum is pointing to.
+And just to prove it, in the final statement,
+we output the value of num directly, and in this case,
+it's showing 45 showing that we did indeed change the underlying
+value through the dereference operator.
+So that's a quick little demo on using the dereference operator
+in C++.
+
 ---
 
 #### Module One Pointers   Pointers   Demo: Simple Pointers
