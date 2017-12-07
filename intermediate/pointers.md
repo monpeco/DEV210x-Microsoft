@@ -1094,3 +1094,171 @@ method makes sense to you to ensure that memory is released like using a delete 
 ---
 
 #### Module One Pointers   Managing Memory in C++   Demo: Dynamic Memory Allocation
+
+# Dynamic Memory Allocation Demo
+
+TODO: missing video
+
+
+>> In this demo we're gonna take a look at dynamic memory
+allocation.
+And in order to do so,
+what we've done is created two pointers.
+One called pInt, which is a pointer to int and
+one called pDouble which is a pointer to a type double.
+Rather than initializing pInt and
+pDouble with the address of a variable,
+which is something that we've done in the previous demos.
+We see the use of the keyword new in the data type
+on the right-hand side of the assignment statement.
+And in this case, the new double down here.
+So what this is telling us is that we are asking the operating
+system to give us a memory
+address to store a variable which will be of type int.
+And in this case to store a variable which will be of type
+double.
+Now that's important to keep in mind because as we
+said before in our discussions around pointers.
+You have to ensure that the pointer you're using
+is of the proper data type for
+the value that you intend to store into it.
+And again, the reason it's important is because
+the operating system needs to know how much memory to
+allocate for that value that will be stored.
+And if you attempt to store a double value in the memory
+address that's been allocated to pInt.
+It will be too large and double is essentially eight bytes,
+the int is four bytes.
+So we will actually go beyond the memory address that has been
+allocated by the operating system.
+Now in modern operating systems and
+compilers, that assignment wouldn't be allowed.
+So it would be an exception or
+an error generated to kind of tell you that.
+But on older systems, that could have been a source of problems,
+bugs in the code.
+Because you were storing a value that was too large for
+the memory that was allocated.
+So once we have assigned a memory address dynamically
+from the operating system to these two pointers.
+We will then use the dereference operator and
+we will assign values to those.
+So in this case, we'll assign 3 to our memory location
+that's pointed to by pInt and then we will assign 5.0
+to the memory that is allocated to pDouble.
+Once we've done that assignment, we'll then print out the value
+that is stored in each one of those memory locations.
+And we'll use the dereference operator to get access to
+the variables.
+We will also print out just for
+our own purposes, the address of those variables as well.
+And then what we;re gonna do is take a look at how C++
+deals with the size of address pointers versus
+the size of the values that are stored in them.
+And then finally, we're going to release those pointers down here
+at the bottom.
+So let's start this code with a Ctrl+F5.
+And I will just drag this off to the side so we can once again,
+can scroll and look at the code that gets executed in
+what the output looks like.
+So, we declared our pointer variables up here.
+The operating system has returned dynamic memory
+addresses for these two variables.
+We have assigned values into those two memory locations and
+then we start our output statements.
+So in the first one we're saying that the value stored at pInt is
+again, using in direction we get the value.
+Then we output the memory address of that variable.
+So in this case, we can see the value stored at pInt is three,
+which is what we assigned.
+And the memory address starts at 9B0210,
+so this is a hexadecimal memory address.
+Our next line executed was basically
+the value stored at pDouble which was five.
+You'll notice a difference because we stored 5.0 and
+it's only outputting 5, so
+it's basically dropped off the fractional part of that value.
+And that's perfectly fine.
+I haven't used format specifiers to indicate
+how I wanted this to display.
+Just know that we're actually storing that value in that
+memory location.
+And then we get the memory address for
+pDouble which is in this case is 9B2228.
+And again, these are dynamically assigned from
+the operating system.
+We have no say as to what those memory addresses will be.
+Then we output our size of statements down here.
+So in the first one, we're dealing with again, our pInt.
+So that the size of pInt and
+pInt is a pointer which stores a memory address.
+So the size of that is four bytes.
+So that basically means that the pointer is
+of size four bytes in order to store that memory address.
+But the size of the value stored in pInt is also four.
+Now that just simply means that we are storing an integer type
+in pInt or in that memory location.
+And an int type in C++ on this particular computer
+is four bytes in size.
+Now if we look at the double,
+the size of pDouble is still only four bytes but
+yet the size of the value stored there is eight.
+So why is there a discrepancy between these two?
+Well again, for the memory architecture in this computer,
+if memory address fits within four bytes of space.
+So this is why the size of our pointer
+is four bytes regardless of the data value stored in it.
+But the value stored in pDouble is a double,
+which is twice the size of an int.
+So therefore,
+it's actually being stored as eight bytes in the computer.
+What that essentially means,
+you can perform a little bit of memory address arithmetic or
+pointer arithmetic if you want to.
+In taking a look at saying, if the size of my pointer int
+is four bytes, the value should be four bytes in size.
+It's stored in that memory location.
+Then essentially, the values would be stored in 9B0210, 211,
+212 and 213, that's my four bytes of memory address space.
+Likewise if we did the binary math or
+hexadecimal math if you will on this memory address,
+we would find eight bytes of that added to 9B2228.
+Would give us the ending address of what pDouble would be and
+so the value wouldn't go beyond that.
+So once we've executed all these statements, it's important for
+us to actually release the memory back to the operating
+system so that other applications can make use of it.
+And that's what the two delete statements are doing down here.
+We're not outputting anything specific saying that the memory
+has been delete.
+Because once we delete the memory address or
+the memory that's associated with these pointers,
+those pointers go out of scope and they're no longer available.
+So we can't really do anything with them.
+If we attempted any line of code that acted on pInt or
+pDouble after we've done the deletion,
+we would generate errors in the code.
+So it's important to always ensure that every time
+you have called the new keyword.
+That at some point in your code, you're calling a delete
+keyword to also release those memory resources.
+That'll change a little bit when we start talking more about
+objects in the next module.
+When we start looking at creating new
+objects from class files.
+Because we deal with constructors in a class file
+when we create or instantiate an object of that type of class.
+We will deal with something called a destructor
+in that class which is similar to this delete keyword.
+Delete is used for
+these particular types of pointers because we're pointing
+to intrinsic or built-in data types.
+So that's the demo on dynamic memory allocation.
+And again, this is using just intrinsic or simple data types.
+You'll revisit dynamic memory allocation using the new keyword
+when we delve deeper into some more of the class files.
+And working with objects that are class files
+rather than intrinsic data types in the next module.
+
+
+---
