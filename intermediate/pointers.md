@@ -1262,3 +1262,84 @@ rather than intrinsic data types in the next module.
 
 
 ---
+
+#### Module One Pointers   Managing Memory in C++   Demo: Dynamic Memory Allocation with Classes
+
+# Dynamic Memory Allocation with Classes
+
+>> In this demonstration, we'll take a look
+at the use of dynamic memory allocation
+with the class file. We will see an example of how we
+dynamically allocate memory
+for an object that we create in our code and then how the destructive plays
+a part in the releasing of the memory resources when we delete that
+object in our code itself.
+So what I've done is recreated the person class here and we can see that we
+have our three private member variables. For first name, last name
+and age. We have our three constructors. We have a single destructor
+and then ofcourse, we have encapsulated our private member variables
+with setters and getters and then, we have our SayHello function
+here at the end.
+Now we're not making use of everything within this class for the example as we
+go through this demonstration because again it's just designed to give you
+an idea of how the destructor plays a part in your class, when we delete
+the object in memory. So the only thing that I've really changed in our
+person class, everything here is the same. We have our default constructor,
+the two argument constructor,
+the three argument constructor and of course our setters
+and getters but the only thing really that's different is this line of code
+that I've written in the destructor itself. But this is not, something you
+typically do in your code but for demonstration purposes,
+I put this output statement here,
+so that we can see in the console window when the destructor
+is actually called. So we look at our Driver program,
+for the purpose of testing.
+We see that we will create a Person object called pOne
+and it's a pointer variable.
+So, we use the new keyword to instantiate memory for this object.
+We use the three argument constructor to build that object in memory
+and then what we will do is,
+issue a statement here just to show that we're actually dealing
+with some data for the pOne object that we've created and we will
+return the first name that we set in the constructor and then just to show
+that it does actually exist in memory, we will output a
+a memory address which has been assigned to that variable
+and again, take note that we're using the address of operator here.
+And then once we've completed that,
+we will basically destroy the object, indicating to
+the operating system that we're finished, with the object and it can
+take that memory back and we do so by calling the Delete keyword.
+Now you may remember this from earlier demonstrations where we show deleting
+objects through dynamic memory allocation that we
+just value references. And in this case, we're dealing with a
+reference variable for class.
+So, a destructor will actually be called once this delete statement
+is executed. So let's go ahead and run this code and see what happens.
+And we wait for it to compile and the command window pops up.
+And in our console window, we can see that, we didn't
+indeed a sign first name Tom and that's what we pull back out with the
+get first name parameter in that line of code right here.
+Then we ask for the memory address of pOne
+and we've been given a memory address.
+In this case, it ends in FE28 and then once we call the Delete keyword, we can
+see that the code within that destructor was actually executed
+and we output the Person destructor called statement to tell us
+that the destructor was actually called.
+Now just by way of an example and again proving how
+dynamic memory allocation works, I'll press the Enter key to end that
+and then, I'll execute the code one more time
+and you notice that, the memory address now has changed.
+So we've dynamically assigned memory for each one of those objects that we
+created. But our application is not continuing to consume that memory
+because our destructor has been called in each instance.
+So get a relatively quick short demonstration just showing how we can
+dynamically allocate memory for our objects in our code when we create new
+instances of the class files that we've created
+and through the use of the destructor.
+We saw that, this simple line told us that the destructor was called simply
+by us, initiating a delete statement on that particular object
+and the memory was released back to the operating system.
+
+
+---
+---
