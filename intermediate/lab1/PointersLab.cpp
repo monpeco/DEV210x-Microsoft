@@ -2,6 +2,8 @@
 
 using namespace std;
 
+void PassByValue(int parameter);
+
 int main(){
   bool debug = true;
   
@@ -17,5 +19,24 @@ int main(){
   *pNum = 5;
   if(debug) cout << num1 << endl;
   
+  // 7. Call PassByValue and pass in num1 as the argument.
+  PassByValue(num1);
+  
+  // 8. Modify the value of num1 inside the PassByValue function and output the new value to the console window.
+  cout << "After PassByValue return to main: " << num1 << endl;
+  
   return 0;
+}
+
+
+// 5. Create a function called PassByValue that accepts an integer argument.
+void PassByValue(int parameter){
+  
+  // 6. Inside PassByValue, output a text string indicating the name of the function you are in.
+  cout << "PassByValue" << endl;
+  
+  // 8. Modify the value of num1 inside the PassByValue function and output the new value to the console window.
+  parameter++;
+  cout << "Inside PassByValue: " << parameter << endl;
+  
 }
