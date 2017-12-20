@@ -1,9 +1,12 @@
 #include <iostream>
+#include <string>
+#include "person.h"
 
 using namespace std;
 
 void PassByValue(int parameter);
 void PassByRef(int *parameter);
+void ModifyPerson(Person *p);
 
 int main(){
   bool debug = true;
@@ -43,7 +46,36 @@ int main(){
   // 21. Output the value stored in the memory location for that variable again.
   cout << "Double number: " << *pNum2 << endl;
   
+  
+  // 26. Instantiate a Person object in your main() method and assign values to the member variables.
+  Person *jon = new Person();
+  jon->name = "Jon Skeet";
+  jon->age = 46;
+  jon->height = 195.5;
+  jon->weight = 95.5;
+  
+  // 27. Output the values stored in the member variables to the console window
+  cout << "\nName: " << jon->name << ", age: " << jon->age << ", height: " << jon->height << ", weight: " << jon->weight << endl;
+  
+  // 28. Call the ModifyPerson() function, passing in your Person object you just created.
+  ModifyPerson(jon);
+  
+  // 30. Back in main(), output the values stored in the Person object you created.  Did the name change?  It should have if 
+  // you passed the object correctly to the function.
+  cout << "\nName: " << jon->name << ", age: " << jon->age << ", height: " << jon->height << ", weight: " << jon->weight << endl;
+
   return 0;
+}
+
+// 25. Create a function in your application called ModifyPerson() that 
+// accepts a Person object as an argument.  NOTE: This function should 
+// be in the application area and not inside the Person class.
+void ModifyPerson(Person *p){
+  // 29. Inside the ModifyPerson() function, change the value in the name member variable.
+  p->name = "Jon Leffler";
+  p->age = 55;
+  p->height = 150.1;
+  p->weight = 70.01;
 }
 
 // 10. Create a function called PassByRef that accepts a reference variable as an argument
