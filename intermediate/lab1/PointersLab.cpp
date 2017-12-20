@@ -22,15 +22,17 @@ int main(){
   
   // 7. Call PassByValue and pass in num1 as the argument.
   PassByValue(num1);
-  
   // 9. After the call returns to main(), output the value of num1 to the console window again.
   cout << "After PassByValue return to main: " << num1 << endl;
   
   // 11. Call PassByRef and send pNum as the argument.
   PassByRef(pNum);
-  
   // 14. After the call returns to main(), output the value of pNum to the console.
   cout << "After PassByRef return to main: " << num1 << endl;
+  
+  // 15. Call PassByValue and pass in pNum as an argument.
+  PassByValue(*pNum);
+  cout << "After PassByValue return to main: " << num1 << endl;
   
   return 0;
 }
@@ -38,7 +40,7 @@ int main(){
 // 10. Create a function called PassByRef that accepts a reference variable as an argument
 void PassByRef(int *parameter){
   // 12. Output a statement indicating the current function name.
-  cout << "PassByRef" << endl;
+  cout << "\nPassByRef" << endl;
   
   // 13. Modify the value of pNum, setting it to 50,  and output the value to the console.
   *parameter = 50;
@@ -50,7 +52,7 @@ void PassByRef(int *parameter){
 void PassByValue(int parameter){
   
   // 6. Inside PassByValue, output a text string indicating the name of the function you are in.
-  cout << "PassByValue" << endl;
+  cout << "\nPassByValue" << endl;
   
   // 8. Modify the value of num1 inside the PassByValue function and output the new value to the console window.
   parameter++;
