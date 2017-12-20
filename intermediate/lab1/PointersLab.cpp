@@ -24,15 +24,24 @@ int main(){
   PassByValue(num1);
   // 9. After the call returns to main(), output the value of num1 to the console window again.
   cout << "After PassByValue return to main: " << num1 << endl;
-  
   // 11. Call PassByRef and send pNum as the argument.
   PassByRef(pNum);
   // 14. After the call returns to main(), output the value of pNum to the console.
   cout << "After PassByRef return to main: " << num1 << endl;
-  
   // 15. Call PassByValue and pass in pNum as an argument.
   PassByValue(*pNum);
   cout << "After PassByValue return to main: " << num1 << endl;
+  
+  // 17. Create a pointer variable to a double, and allocate memory for it using the new keyword.
+  double *pNum2 = new double();  
+  // 18. Assign a value to the memory location.
+  *pNum2 = 22.75;
+  // 19. Use the dereference operator, get the value and output it to the console.
+  cout << "\nDouble number: " << *pNum2 << endl;
+  // 20. Deallocate the memory for that variable.
+  delete pNum2;
+  // 21. Output the value stored in the memory location for that variable again.
+  cout << "Double number: " << *pNum2 << endl;
   
   return 0;
 }
