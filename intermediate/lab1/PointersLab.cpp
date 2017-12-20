@@ -9,11 +9,11 @@ void PassByRef(int *parameter);
 void ModifyPerson(Person *p);
 
 int main(){
-  bool debug = true;
+  bool debug = false;
   
-  int num1; // 2. In your main() function, create two variables.  One variable needs to an intrinsic integer variable named num1 and the second needs to be a pointer to an int pNum.
+  // 2. In your main() function, create two variables.  One variable needs to an intrinsic integer variable named num1 and the second needs to be a pointer to an int pNum.
+  int num1; 
   int *pNum;
-  
   
   num1 = 3; // 3. Assign the value 3 to num1.
   if(debug) cout << num1 << endl;
@@ -101,3 +101,6 @@ void PassByValue(int parameter){
   
 }
 
+/*
+g++ PointersLab.cpp person.cpp -o PointersLab.exe 
+*/
