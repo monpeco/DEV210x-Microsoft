@@ -9,17 +9,18 @@ void PassByRef(int *parameter);
 void ModifyPerson(Person *p);
 
 int main(){
-  bool debug = false;
+  bool debug = true;
   
   // 2. In your main() function, create two variables.  One variable needs to an intrinsic integer variable named num1 and the second needs to be a pointer to an int pNum.
   int num1; 
-  int *pNum;
+  int num2;
+  int *pNum = &num2;  // pointer points to another variable!
   
   num1 = 3; // 3. Assign the value 3 to num1.
   if(debug) cout << num1 << endl;
   
   // 4. Assign the value 5 to the memory location stored in pNum.
-  pNum = &num1;
+  //pNum = &num1;
   *pNum = 5;
   if(debug) cout << num1 << endl;
   
