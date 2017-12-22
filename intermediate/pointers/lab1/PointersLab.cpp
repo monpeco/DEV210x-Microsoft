@@ -65,6 +65,9 @@ int main(){
   // you passed the object correctly to the function.
   cout << "\nName: " << jon->name << ", age: " << jon->age << ", height: " << jon->height << ", weight: " << jon->weight << endl;
 
+  int x[5];
+  cout << endl << sizeof(x) / sizeof(int) << endl;
+
   return 0;
 }
 
