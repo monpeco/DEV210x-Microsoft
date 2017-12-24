@@ -28,6 +28,9 @@ int main(){
   Dog dog;
   dog.sayHello();
   
+  cout << "\nGeometry::PI: " << Geometry::PI << endl; 
+  cout << "Geometry::area(10.0): " << Geometry::area(10.0) << endl; 
+  
   cout << "\nEnd program" << endl;
   
   return 0;

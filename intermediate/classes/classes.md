@@ -1046,3 +1046,257 @@ of code contains an error.
 ---
 
 #### Module Two More C++ Classes   Scope in Classes   Namespaces
+
+# Namespaces
+
+Class scope covered an important aspect of working in C++ with class files but it isn't the only place 
+that scope comes into consideration.  C++ provides the standard template library (STL) that consists of 
+many classes and functionality.  It is conceivable that at some point in your career as a software 
+developer, you will create classes with names that conflict with those in the STL or with other code in 
+a software project.  C++ uses namespaces to help resolve these conflicting issues.
+
+A namespace is a "scope container" where you can place your classes, variables, or other identifiers to 
+prevent conflicts with others.  Anytime you want to reduce ambiguity or name collisions, you use the 
+namespace designator ahead of the identifier.  You have already seen an example of this in the sample 
+code used so far in this course with std::cout.  the cout function exists in the namespace std.  
+The :: is the scope resolution operator and allows you gain access to the cout function in the std namespace. 
+
+A contrived example where you're code also contains a function called cout might cause naming collisions 
+and ambiguity if your code required the use of std::cout and your cout function, unless you used namespaces.  
+For example, you might create a namespace for your code such as myNS.  In which case if you needed to use 
+both cout functions in your code, you would call the C++ version using std::cout and your version using 
+myNS::cout.   In this way, there is no ambiguity as to which function you are calling.
+
+C++ also permits the use of using statement to help reduce the amount of code that you have to tyep when 
+classes are inside a namespace.  For example, you could place the following statement at the top of your 
+C++ file:
+
+**using namespace std;**
+
+By doing this, you can now simple use cout << "Hello"; in your code instead of typing the namespace and 
+scope resolution operator, saving you some keystrokes.   However, take note that you cannot apply using 
+statement if there is a chance of ambiguity in the code.  For example, you could not use the following code:
+
+```c++
+using namespace std;
+using namespace myNS;
+
+int main()
+{
+  cout << "std version of cout";
+  
+  cout << "myNS version of cout";
+}
+```
+
+The compiler has no way of knowing which cout to call in these two lines.  However you could 
+theoretically write code such as:
+
+```c++
+using namespace std;
+
+int main()
+{
+  cout << "std version of cout";
+  
+  myNS::cout << "myNS version of cout";
+}
+```
+
+You can define your own namespace by using the keyword namespace, followed by the chosen name 
+and then enclosing your code within the curly braces.  You also have the option of creating 
+nested namespaces if you choose to provide more separation of identifiers in your code.  Just 
+remember that each namespace you nest, creates more code you need to type.  A code sample 
+demonstrates this.
+
+```c++
+namespace Microsoft
+{
+  namespace Geometry
+  {
+      const double PI = 3.14159;
+
+      double Area(double radius)
+      {
+          return PI*(r*r);
+      }
+  }
+  
+}
+```
+
+**Example with using statement**
+
+```c++
+using namespace Microsoft;
+
+int main()
+{
+
+  double radius = 12.5;
+
+  double area = Geometry::Area(radius);
+}
+```
+
+
+** Example with using statement**
+
+```c++
+int main()
+{
+
+  double radius = 12.5;
+
+  double area = Microsoft::Geometry::Area(radius);
+}
+```
+To keep the code simplified so we can focus on namespaces, we have omitted classes and access modifiers.   
+In the first code segment we have created a namespace called Microsoft and a nested namespace called Geometry.  
+Within Geometry we have a constant to represent PI and a function that will calcuate the area of a circle 
+given a radius.  The second and third code segments show how we would make use of this namespace and function 
+in code.
+
+---
+
+#### Module Two More C++ Classes   Scope in Classes   Demo: Namespaces
+
+# Namespaces Demo
+
+https://youtu.be/6d7yZJAiB0I
+
+>> In this demonstration we're going to take a look at how to make
+use of Namespaces
+within your code. Now again thinking back on the textual content of
+what we covered Namespaces in this particular module, we said that we use
+Namespaces to help avoid class name collisions and to help us have the
+ability to utilize class names
+and our code that might exists in other libraries.
+And as an example, I have the math.h or the math header file brought into my
+application, now this is the standard, C standard library math header file.
+and this includes all kinds of functions for doing trigonometric
+things such as sine, cosine,tangent,
+you can do Raising's to the power of an exponent, you can
+call square root functions, you can deal with Floor, ceiling and center all kinds
+of different mathematical functions here.
+And this comes in the C standard library
+and you may have a need to include this in some of your application code.
+Will talk a little bit about,
+how this creates a potential conflict in just a moment.
+But I wanted to give you an example of how we utilize some of that code, so from
+the math header file have actually done and include statement up here which is
+cmath and for c++ we typically bring this in
+and it includes some macros but
+ultimately it brings in this math.header file for us with all of that
+functionality. Will cover this one in just a moment when we see the little
+special math class that I've created for this instance. Now in our main function
+I have two different lines that are calling
+some mathematical functions out of
+that math header file. One for square root and one for power,
+so we'll raise 2 to the power of 4
+and if I execute that code you'll see that indeed this information
+does print it correctly on the screen.
+So once the code executes the square root of 2.3 is displayed
+and then 2 raise to the power of 4 is indeed 16. Now one of the
+reasons why I showed you that was, to give you an idea of why we might want to
+create our own math class and in this instance if you remember from back in
+your days of mathematics anytime that we use a negative
+exponent on a power-- or call to a power function
+such as this, any value
+raised to a negative exponent is always going to give us a value of zero in
+while mathematically that's true that may not necessarily be exactly what it
+is that we're after. So instead what we want to do is we want to create our own
+class that kind of handles that situation for us and in this case I've
+done that with a math class that I've created myself.
+Now I've declared it is a
+static class and the reason I've done this is because I don't it's a utility
+class. So I don't want to have to create an instance of this class, you know to
+instantiate it and create an object to deal with that. I simply want to be able
+to call the functions that exists in that class. So I've declared its static
+and I've created one static method that's public inside of it and it's
+called pow. So I'm going to create my own
+function to raise a value to
+an exponent and as we take a look at it, you'll see that this one I'm particularly
+going to return it an integer value
+and I'm going to accept two integer values
+coming in. If we come into our C standard library header 1 and we do a quick
+search and in this case we're looking for the power function we can see that
+this particular header file shows us that we have one that accepts doubles
+and returns doubles and if we search a little bit further on we can see that we
+have another overloaded one for float etc--.
+So we can continue on
+look at all the overloads that are available in that header file. But the
+simple fact of the matter is that, that there isn't really one this displaying
+integers it will do some implicit data conversion if we pass integers in. But in
+my implementation of the math class,
+what I want to be able to do is, I want to be
+able to check for a negative value because I don't want anybody passing it
+in. We could go into any number of reasons for why this might be I could be
+creating a calculator application for students to understand how to work with
+exponents and we didn't want to deal with negative values. So really all I've
+done here is inside my pow function where I'm accepting an integer for the
+value an integer for the exponent.
+I'm doing one little quick check to make sure that my exponent value is greater
+than 0, If it is, I'll do the formula for calculating the power or raising that
+value to the exponent it's passed in. But if it's not greater than 0
+then I'm going to output a message to
+the user saying, you should only enter
+positive values for this exponent. So really all I've done is just created
+some code it's a contrived scenario, just to show you how we can use two classes
+that have the same name and a function that exists in two separate classes of
+the same name. But how the compiler will know through the use of Namespaces which
+one I'm specifically calling. So let's get back to our driver program Namespaces
+.cpp and in here I actually have
+some code that I'm going to uncomment and
+this code will allow us to work with the two separate power functions that we
+have. So I'll continue to call the math.h it's the C standard library power
+function in math.h here and down here you'll notice that what I'm going to do
+is I'm going to call my version of math
+and how we tell the compiler which one
+were working with is through the use of this namespace. So you'll notice in my
+math. header file. I prefixed everything with the namespace and I gave
+it with the namespace MyMath. So this is the designator for it
+and within this code here
+I explicitly tell it, I want to call the power function in MyMath namespace in
+the math class found within that namespace and I'm going to pass these
+values in. So let's run this code and see what happens!
+We build the application and it runs in
+the background and you'll see that
+because we passed in that negative value, it comes back and tells us please enter
+only positive values for the exponent. Now I put this line in
+here as well, just to simply indicate that we are in fact inside that power
+function. It didn't exist in the math. or the standard C library
+math function for pow.
+So in other words it turned in the what was it we were expecting it to do. So
+I'll remove that negative value. Let's just to another Ctrl+F5 to run the
+application again and you'll see that I didn't pass in a negative value this
+time, but you can also see that indeed
+the compiler new which power function to call because of that namespace code that
+we've entered in there. Now to give you an idea of how the namespaces work you may
+have seen some of the demo's, where we have using namespace STD or the standard
+namespace here and one of the things that
+I can do is, I can reduce the amount
+of code that I have to type. If I were to be using this power function throughout my
+code number of times, by entering this using namespace MyMath at the top and
+once I do that I can actually eliminate the namespace down here in the code and
+If I now compile and run this application, you should see the exact
+same results that happened before.
+Alright, so we still called the right power function the compiler still know
+exactly how to call the power function and a part of it was because it's prefix
+with the class name here and then the power function, but also because we've
+introduced the using namespace statement up here as well. So this really helps to
+reduce the amount of code that we have to write. So it means we don't have to
+put MyMath and the resolution scope, resolution operator math scope,
+resolution operator pow.
+Alright, so again just a very quick and simple demo on namespaces kind of the
+rationale behind, why we might want to use them in an application.
+How to implement them within our math.header file simply by prefixing and
+surrounding everything with the namespace in the
+open, close curly braces
+and then how we can import or or bring in that namespace. So we can reduce the
+amount of code that we have to type in our application.
+
+
+---
+
+#### 
