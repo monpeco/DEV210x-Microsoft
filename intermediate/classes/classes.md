@@ -381,3 +381,212 @@ C and C++ with Visual Studio: https://aka.ms/edx-dev210.2x-vs02
 ---
 
 #### Module Two More C++ Classes   Constructors and Destructors   Class Destructors
+
+# Class Destructors
+
+Now that we know how to create objects, and we know that they consume memory while they 
+hang around in our application's executable memory space, we also need to know how to 
+release that memory when we no longer require the objects.  We do so with the use of a 
+destructor.
+
+In the previous code samples, you may have noticed that the destructor looked a lot like 
+the default constructor, only preceded with a tilde (~).  While it looks similar to the 
+a constructor, having no return type and the same name as the class, except for the tilde, 
+it's important to note that a destructor cannot have any arguments passed in to it.  
+Therefore, when writing your own destructors, you should not place arguments between 
+the parentheses for the destructor.
+
+The compiler will handle the actual calling of the destructor when your object expires or 
+the application is closing.  If you choose, you can place code inside the destructor.  
+One reason you may want to do this is to ensure that any resources used by the object, 
+that may not be destroyed or cleaned up, are taken care of in your object's destructor 
+code.
+
+---
+
+#### Module Two More C++ Classes   Constructors and Destructors   Dynamic Memory Allocation and Classes
+
+# Dynamic Memory Allocation and Classes
+
+When your application is coded, you may have no idea how many Person objects you will 
+need during the program's lifetime.  As a result, it is likely not possible for you to 
+create sufficient Person objects in code and let the compiler determine how much memory 
+is required for these objects at compile time.   Chances are, you will be creating many 
+objects dynamically as your application code executes.   In order to do so, the 
+application must request memory from the operating system as the application is executing, 
+(dynamically).  
+
+This topic discusses the importance of two C++ keywords new and delete.  The keyword new is 
+used to allocate memory for an object at runtime and delete is used to release that memory.  
+This is also where the constructors and destructors play a big part.   You will also need to 
+change the way you call functions and work with the objects, and we'll cover that in this 
+topic.
+
+Dynamically allocating memory to hold an object is done with the new keyword. Using the new 
+keyword means that you must be making the assignment to a pointer of the correct data type.  
+The following code shows a valid and an invalid use of the new keyword.
+
+```c++
+Person *pOne = new Person();
+
+Person per = new Person(); 
+```
+
+In the first line, we declare a pointer called pOne that will hold the memory address of a 
+Person object that will reside in an area of computer memory known as the heap.  When the 
+new keyword is encountered, the computer will set aside enough memory to hold a Person 
+object in memory and assign that memory address to the variable pOne.   We have not 
+created an actual object in memory yet, we have simply asked the computer to allocate 
+sufficient memory to store the object.   How does it know how much memory is needed?  
+In the case of our Person class, the size is determined by looking at all the member 
+variables, (the classes data), and based on the data types, it determines the maximum 
+amount of memory required for the object.  No values are assigned at this time either 
+so the compiler uses the maximum size of the specified data type for each member variable.
+
+What happens if our class contains other classes nested within it?  The compiler will 
+look at all the members of those classes as well and allocate sufficient memory for them 
+as well.
+
+In the second line of code above, we simple declare a variable to be of type Person and 
+call it per.  However, the use of the new keyword is not legal here, at least when using 
+Microsoft Visual Studio 2015.  The error message returned from the compiler indicates 
+that "No suitable constructor exists to convert from Person * to Person."   This clearly 
+indicates that new is seeking a pointer and not an object variable.
+
+Once you have used the new keyword to dynamically create an object in memory, the way 
+in which you access the member variables and functions is a little different than simply 
+using the dot operator like you might be familiar with in other languages such as C# or 
+Java.  You will now need to use the arrow selection operator to access the members of the 
+class, as shown in the following code sample.
+
+```c++
+Person *pOne = new Person("Gerry", "O\'Brien");
+std::cout << pOne->GetLastName() << endl;
+```
+
+In the first line of code, we declare a pointer *pOne and assign it a memory address using 
+the new keyword.   The compiler sets aside memory for the object and assigns the first and 
+last name values to the member variables using one of the constructors in our Person class.  
+(Refer to previous code samples for the constructors).  Because the object has been 
+dynamically allocated with the new keyword, we must use the arrow selection operator and we 
+see that in the second line of code where we access the GetLastName() member function to 
+retrieve the value stored in the object pointed to by pOne.
+
+For every object you create using the new keyword, you also need to use the delete keyword 
+to remove the reference to the memory allocated and to release that memory back to the 
+operating system.  Failure to do so results in a memory leak in your application.  The memory 
+that is taken up by the object is not released back to the operating system until you call 
+delete or until the application quits.  If you continue to allocate new objects with new and 
+fail to use delete when finished with those objects, the memory used by your application will 
+continue to increase.  The use of delete is rather simple as the following code snippet 
+demonstrates.
+
+```c++
+Person *pOne = new Person("Gerry", "O\'Brien");
+std::cout << pOne->GetLastName() << endl;
+
+// delete object, releasing memory
+delete pOne;
+```
+
+When delete is called on an object, that object's destructor is called.  The destructor is 
+the correct location in code perform clean up operations on your object and anything that 
+it references.  For example, you might have dynamically declared and used other objects 
+from within your object.  In this case, you are responsible for ensuring that those other 
+objects are also destroyed and that their memory is released.  You do this by placing the 
+appropriate delete statements inside your object's destructor.
+
+---
+
+#### Module Two More C++ Classes   Constructors and Destructors   Demo: Constructors
+
+# Constructors Demo
+
+https://youtu.be/qX2he0bQ8P0
+
+>> In this demonstration we're going to take a look at how we call
+the three constructors in our Person class.
+So, we have the person header file up here
+screen just so that we can go back
+and remind ourselves quickly of the three different constructors.
+We actually created within our person
+class or default, that accepts no arguments.
+Second constructor which will accept the first and last name
+and then the third constructor which is looking for a first name, last name
+and an age. Now the we also destructor present here,
+within our personalities class as well.
+So how do we make use of these within our code.
+Well if we come back to our using constructors that
+cpp implementation file.
+Within our main method this is where we're going to create some objects of
+type person within our code, and then we will implement the functionality,
+of the constructor simply by calling them.
+Notice at the top of the cpp file, I have included
+the Person.h or the Person header file.
+Even though our person cpp so, the implementation file
+contains that header file, include statement.
+when we're using it in our application,
+any other implementation file that needs to be aware of
+the member variables and functions for the person class
+will also need to have the header file included as well.
+So, now that we've got that included. Let's go ahead and create our first
+person object which will be pOne and we will implement
+default constructor for this particular one
+we'll just simply say new person.
+Open close the parentheses semicolon
+and that's a valid call to the default constructor for pOne.
+Let's go ahead and create a couple more so, we'll do a person
+let's call this one pTwo and this equals new person
+and in this case we're going to use the second
+constructor for the person class which is looking for
+a first and last name. And as we start to type once
+we've actually typed in the separating comma for the
+parameter list within our
+constructor that we have here.
+You'll notice that visual studio has popped up
+our little intellisense window telling us
+probably what is going to be the constructor that we're going to call
+and it's based on for being four different
+overloads that we have available.
+This one here being accepting the first and last name
+and you can see the parameters listed here.
+If we click the drop-down will actually start
+going to cycling through the different
+constructors that visual studio see's.
+The first one obviously is our default which accepts nothing.
+The second one is a constructor that we didn't create.
+But the compiler recognizes and creates
+one that will accept the reference to a person object itself
+and then of course the second one we're calling
+which is looking for the first and last name.
+And then we will enact that third or in the intellisense list fourth
+constructor here for pThree
+and in this case we will pass in the values for the first name, last name
+and the age as well so, we'll put in tom on begin
+when we type in the comment here we can see that it's not looking
+for an age value will put 25 in for that.
+And then we have created calling code for all three
+of the constructors that we've written within our person class.
+Now it's also important to note to that each one of these
+objects that we've created the pOne,pTwo and pThree
+will exist on the heap of the computer's memory, because we ask
+to allocate we'd ask the operating system to allocate memory for these
+and only when our application ends
+will these objects go out of scope and actually be destroyed.
+We'll cover that more in the topic on Dynamic Memory Allocation
+with your classes and where we will
+take a look at the new keyword and the delete key word
+but the reason I bring it up here is because one of the things that
+you'll note that we don't have in the code here is an actual call
+to the destructor of the class and that's not something that we typically call
+directly, by using the delete keyword
+the compiler calls the destructor for that class for us
+and we'll see an example of that again a little bit later on in another demo
+when we focus on the Dynamic Memory Allocation.
+So, again this demonstration was just to show how we can,
+create and call the constructors within our classes that
+as we create objects of those within our code.
+
+---
+
+#### Module Two More C++ Classes   Scope in Classes   What is Class Scope?
