@@ -26,6 +26,44 @@ Person::~Person(){
   
 }
 
+void Person::SetFirstName(string fName)
+{
+    this->firstName = fName;
+}
+
+string Person::GetFirstName()
+{
+    return this->firstName;
+}
+
+void Person::SetLastName(string lName)
+{
+    this->lastName = lName;
+}
+
+string Person::GetLastName()
+{
+    return this->lastName;
+}
+
+void Person::SetAge(int age)
+{
+    if (age > 0)
+    {
+        this->age = age;
+    }
+    else
+    {
+        std::cout << "Please enter a valid age" << std::endl;
+    }
+}
+
+int Person::GetAge()
+{
+    return this->age;
+}
+
+
 void Person::sayHello(){
   cout << "\nHello" << endl;
 }

@@ -766,3 +766,283 @@ well because we set pRef as a reference to p.
 Note on line 22 however that in order to call the SayHello() function from the dynamically allocated Person 
 object called pOne, we had to use the member selection operator (->) to gain access to the SayHello() function.
 
+---
+
+#### Module Two More C++ Classes   Scope in Classes   Demo: Class Scope
+
+
+# Demo: Class Scope
+
+>> In this demonstration we're going to take a look at how to use class scope
+within our classes. For this particular demo we have a person class.
+So our person header file shows that we have our three private member
+variables for first last in age.
+We also have our three constructors and our destructor but
+we've also added some setters and getters and then we have our Say Hello
+function and these are all public functions which means that they are
+accessible outside of the class.
+When we create our classes in the sample code will see that
+we call a couple of these functions and how they actually behave
+based on the classic we are calling or the classes were using. We also have the
+dog class and the dog class looks pretty much identical to our
+person class. We have three private
+member variables three constructors and destructors
+setters, getters and another public function called Say Hello!
+The reason we're showing you that the dog class in a person class are the
+same in structure is because we have function names that are identical
+in each one of the class files.
+This is a part of what we talked about in the theory for this portion, where we
+talked about the class scope meaning that we can use the same names
+for variables and for functions within different classes and not have a
+compiler get confused as to which one we are referring to, it will be
+basically inferred by the class.
+We are using so the compiler will know which one of these functions
+we are actually calling. So let's go ahead and take a look at our
+little driver program here we have classscope.cpp we are bringing in the
+person and dog header files. So that our main class here our main method
+knows about these two classes.
+In our first line here we are creating a new person variable
+using a pointer called p and we are using the constructor that accepts a
+first and last name then what we will do is we will output a statement to the
+console window. By using the get first name to pull, the first name that we have
+assigned from that person object.
+Then we will call the Say Hello function on that person object.
+Once we've completed that will then create a new dog object pointed at
+by the variable D and we will use the same constructor the two valued
+constructor,but you'll notice we have a different first name
+for our dog then we did for the person.
+Then we will do the same thing again, we will output the dogs first name
+by calling to get first name function and then we will ask the dog to
+Say Hello and again the whole purpose behind this is just to really realize
+and recognize that we are using function names that are identical.
+So the exact same function name
+in each one of these calls, but because of class scope the
+compiler will know exactly which ones we are referring to.
+So let's go ahead and run this code and see what happens, you'll notice in our
+first line here in the console window the person's first name is equal to Tom
+and indeed that is what we set for
+the person's first name here. The Say Hello function output
+the word hello to the screen then we've created the dog object
+and we set the dogs first name remove this console window just up here
+a bit and we'll see that the dogs
+first name was Fido and we see that when we output what the dog first name was
+indeed it was Fido and then when we called to Say Hello woof was printed
+rather than hello. So again
+focusing on the implementation details in the person class. We had to
+get first name which would return this first name. So the first name for that
+specific instance. but also in our Say Hello function we are simply
+the output into the console Hello.
+In the dog implementation we still had to get first name using the this
+keyword but we also had to Say Hello function and in this case it's simply
+said woof in the implementation.
+So again it's just a quick demonstration to show you
+how class scope plays into calling classes with functions that have the
+same names or even dealing with functions that have the same member
+variables again the class scope means that those member variables
+and functions are hidden inside the class in terms of the compiler
+knowing which one to call.
+So they're not technically hidden because their public
+but when you call a function on a class. The scope
+is based on the class name or the object that it's pointing to
+when the compiler looks for which function it is to call.
+
+
+---
+
+#### Module Two More C++ Classes   Scope in Classes   Encapsulation
+
+# Encapsulation
+
+When we consider the term encapsulation we should be clear on the context in which we are using it.  
+We can say that encapsulation is the programming language aspect that permits the inclusion of data 
+and functionality into a single package.  In this definition, inclusion means to take all of the data
+(member variables) and functionality that acts on that data (member functions) and enclose it within 
+the definition of a class file.
+
+The second definition is considered data hiding or data restriction.  As an example to help explain 
+this definition, consider the case of our Person class used in previous topics.  We may want to ensure 
+that a user of the Person class cannot set the first name, last name, or age member variables directly.  
+In our sample code, we have declared these member variables to be private, which means direct access is 
+not possible.  The only way, in the current code sample, to set these variables' values is to use the 
+constructor.  
+
+A best practice is to also provide public functions that allow users of the class to change these values 
+but indirectly.  That is to say, they can only modify the values through the use of a public function.  
+Inside that function, you, as the developer, control how data passed in from the user is handled.  For 
+example, you might want to validate the data passed in for the age variable to ensure it is a valid age 
+for the intended purpose.   In other words, if a user attempts to pass in a negative value or a character 
+value for age, your public method could check for these instances and handle the situation appropriately. 
+You might send an error message to the user or you could trim blank spaces, etc.
+
+The important part of encapsulation from the second definition perspective is that users of your class 
+have no insight into how you set the values or validate the information.  It's indicative of the way in 
+which you require absolutely no knowledge of the internal combustion engine in order to turn the ignition 
+key and start it.
+
+To implement encapsulation in our Person class, we could add the following code to the Person class to 
+facilitate setting and retrieving the values for the member variables.
+
+**Person.h**
+
+```C++
+#pragma once
+
+#include <string>
+
+class Person
+{
+
+private:
+    std::string firstName;
+    std::string lastName;
+
+    int age;
+
+public:
+
+    int count;
+    Person();
+
+    Person(std::string fName, std::string lName);
+
+    Person(std::string fName, std::string lName, int age);
+
+    ~Person();
+
+    void SetFirstName(std::string fName);
+    std::string GetFirstName();
+    
+    void SetLastName(std::string lName);
+    std::string GetLastName();
+
+    void SetAge(int age);
+    int GetAge();
+
+    void SayHello();
+
+};
+```
+
+**Person.cpp**
+
+```C++
+#include "stdafx.h"
+#include "Person.h"
+#include <iostream>
+
+
+Person::Person()
+{
+
+}
+
+Person::Person(std::string fName, std::string lName)
+{
+    firstName = fName;
+    lastName = lName;
+}
+
+Person::Person(std::string fName, std::string lName, int age)
+{
+    firstName = fName;
+    lastName = lName;
+
+    age = age;
+}
+
+
+Person::~Person()
+{
+}
+
+void Person::SetFirstName(std::string fName)
+{
+    this->firstName = fName;
+}
+
+std::string Person::GetFirstName()
+{
+    return this->firstName;
+}
+
+void Person::SetLastName(std::string lName)
+{
+    this->lastName = lName;
+}
+
+std::string Person::GetLastName()
+{
+    return this->lastName;
+}
+
+void Person::SetAge(int age)
+{
+    if (age > 0)
+    {
+        this->age = age;
+    }
+    else
+    {
+        std::cout << "Please enter a valid age" << std::endl;
+    }
+}
+
+int Person::GetAge()
+{
+    return this->age;
+}
+
+void Person::SayHello()
+{
+    std::cout << "Hello" << std::endl;
+}
+```
+
+**Test Program**
+
+```C++
+int main()
+{
+    Person p;
+
+    p.SetFirstName("Gerry");
+    std::cout << p.GetFirstName() << std::endl;
+
+    // this line will output an invalid age message due to the 
+    // validation check in the SetAge() function
+    p.SetAge(-5);
+
+    // this line will not work because firstName is private
+    p.firstName = "Gerry";
+
+    return 0;
+}
+```
+
+In our revised code, we have added some functions to set and get the member variables.  Outside of the 
+constructors, this is the only way to set these values and now we actually have functions that will 
+return these values if we need them in our program code.
+
+In our sample test program code, we declare a Person variable called p.  We then use the dot notation 
+to call the SetFirstName() function and also call the GetFirstName() function to output the value to 
+the console window.  The SetFirstName() does nothing special other than to set the firstName member 
+variable to the value passed into the function call.  
+
+Next we called the p.SetAge() function and passed in a value of -5.  This is, of course, an invalid age 
+value.  In our SetAge() function, we have simple logic that just checks to see if the value passed in 
+is greater than 0. If it is, the assignment is made but if not, a message is sent back to the user of 
+the application.   The encapsulation aspect to this is simple that the user has no idea what validation 
+code we have placed in SetAge(), nor do they know how we are checking the age, setting the age, or 
+outputting the message.   They simply see the results of the function call.
+
+Finally, in the last part of the code we attempt to set the firstName member variable of the p object 
+directly.   This will generate a compiler error when you attempt to compile the program code.  Depending 
+on your compiler, the error message may differ but Visual Studio 2015 will give the error '=': function 
+as left operand.  In fact, the Intellisense feature in Visual Studio will not even list private member 
+variables for auto completion of code which should be a clear indicator to the developer that the line 
+of code contains an error.
+
+
+---
+
+#### Module Two More C++ Classes   Scope in Classes   Namespaces
