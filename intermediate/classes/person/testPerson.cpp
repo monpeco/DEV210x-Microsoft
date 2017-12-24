@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "Person.h"
+#include "Dog.h"
 
 using namespace std;
 
@@ -15,6 +16,9 @@ int main(){
   
   Person &pRef = p;
   pRef.sayHello();
+  
+  Dog dog;
+  dog.sayHello();
   
   cout << "\nEnd program" << endl;
   
