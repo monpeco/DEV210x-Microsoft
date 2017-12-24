@@ -27,5 +27,5 @@ Person::~Person(){
 }
 
 void Person::sayHello(){
-  
+  cout << "\nHello" << endl;
 }
