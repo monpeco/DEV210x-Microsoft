@@ -6,23 +6,23 @@ using namespace std;
 
 
 Person::Person(){
-  firstName = "not provided";
-  lastName = "not provided";
+  firstName = "[not provided]";
+  lastName = "[not provided]";
   age = -1;
   cout << "  Person::Person() => (" << firstName << "," << lastName<< "," << age << ")" << endl;
 }
 
 Person::Person(string firstName, string lastName){
-  firstName = firstName;
-  lastName = lastName;
-  age = -1;
+  this->firstName = firstName;
+  this->lastName = lastName;
+  this->age = -1;
   cout << "  Person::Person(string firstName, string lastName) => (" << firstName << "," << lastName<< "," << age << ")" << endl;
 }
 
 Person::Person(string firstName, string lastName, int age){
-  firstName = firstName;
-  lastName = lastName;
-  age = age;
+  this->firstName = firstName;
+  this->lastName = lastName;
+  this->age = age;
   cout << "  Person::Person(string firstName, string lastName, int age) => (" << firstName << "," << lastName<< "," << age << ")" << endl;
 }
 
