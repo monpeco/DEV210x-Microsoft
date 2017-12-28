@@ -169,3 +169,90 @@ require that the base class is initialized before your derived classes.
 ---
 
 #### Module Three More OOP in C++   Inheritance   Demo: Inherit from a Base Class
+
+# Inherit from a Base Class Demo
+
+https://youtu.be/gGjpkF-Lmak
+
+>> Hi, in this demonstration I'm going to show how to implement inheritance using
+two simple classes. We'll have a base class called Person and we'll have a
+derived class called Student, which inherits everything and adds additional
+features. So let me show you the base class first of all. We'll have a look at the header
+file Person.h. So this is quite a simple class, as you can see. The Person
+class has one private field and a protected field. I've decided to make
+age protected in case the derived class wanted to access it. Then we have two
+constructors for the sake of the example. The first constructor has no arguments
+and initializes the Person with simple values and then we have a proper
+constructor which initializes the Person properly. Ah, plus, for the sake of interest I
+have a displayNameAge() method there, which will display the person's name and
+age. So that's the simple definition for the Person class. The implementation is
+quite simple as well. So in the Person class we have constructor, which
+initializes the name and age with made-up values if you like and a little
+message here that will display on the console to indicate that this constructor
+has been called. That would be useful to help you understand the order in which
+constructors get called when you have inheritance. What you'll find is always
+the base class constructor gets called first, followed by the derived constructor. So the
+object gets built from the brown, the object gets built up from the ground up
+if you like.
+So then we have a proper Person constructor which initializes the Person
+with a given name and age plus another message to say which constructor has
+been executed and here's a simple message to display on the console. So
+that's the base class now let's have a look at the Student class which inherits
+from it. So first of all, notice, when you inherit you have to specify, you have to
+include the whole of the header file to the base class. Obviously the compiler
+needs to know everything about the base class so that it understands what
+inheritance means. For Student here we note, specify that Student inherits
+publicly from Person.
+Don't forget the public keyword. That's important. If you leave that out the
+default is private and public inheritance is what you want. It means that
+members in the base class, which are public, remain public when you inherit
+them. So they are still accessible in the derived class.
+So don't forget that. And then the Student has some additional data as well
+as inheriting the name and age from Person.
+it also has a course, couple of constructors, a default constructor there,
+plus a constructor to initialize everything a Student has, including
+inherited data such as name and age plus the additional piece of data which is the
+course. And here we have another method which displays that course. So that's the
+definition for the Student class. Now let's see how it is implemented. So a
+couple of interesting points here. In the constructor, the default constructor here,
+notice that we don't mention the base class. If you don't mention the base
+class constructor, the compiler will automatically invoke the no argument
+constructor anyway. It'll always invoke the base constructor whether you want it
+or not. You can't avoid it. So if you don't mention the base class there, it will
+invoke the default constructor in the base class, and if your base class
+doesn't have a default constructor then you have a compiler error. So this will
+invoke the default constructor from Person to initialize the name and age with
+artificial values. Then after that's finished, it'll fire up this code to set the
+course and then it will output a message to say that that's this constructor
+being executed. Now our second constructor is a bit more interesting,
+a bit more explicit. In this constructor we do call the Person constructor explicitly.
+So that would call the base constructor to initialize the name and age with the
+values passed into us. After that's finished, then we'll set our course
+property to the value that's being passed in, and we'll also display
+a message on the console.
+Ok, so that's our inheritance hierarchy. I have a very simple main application here, in
+main.cpp, to illustrate both the no arg constructor and the parameterized
+constructor. So first of all I create a Student using the no arg constructor.
+That will implicitly invoke the Person constructor with no arguments and
+then I display the person's name and age and of course remember that the student
+inherits that method from the
+base class. It's still accessible to us in our client code. Then I create a
+Student object using in the parameterized constructors. This will vote the second
+Student constructor, which invokes the parameterized Person constructor to set
+everything properly and then we display that students details on the console as
+well. So I'll run the application and let's just have a look here.
+So for the first Student object that got created, we have the Person constructor
+with no arguments called first. Always the base constructor gets called first.
+Then the derived constructor, and these are the display methods, displayNameAndAge()
+and displayCourse(). These are the methods that we've got here. And then
+these statements here come from the Person constructor that took arguments and the
+Student constructor that took arguments. So in our code we called the Student
+constructor, but underneath the surface it will first of all call the base
+constructor, then it'll invoke our constructors. The object gets built
+ground upwards. And as you can see when we display the details, they have been set
+properly.
+
+
+---
+
+#### Module Three More OOP in C++   Encapsulation and Protected Access   The Protected Keyword
