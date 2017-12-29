@@ -27,8 +27,29 @@ Person::Person(string firstName, string lastName, int age){
 }
 
 Person::~Person(){
+  cout << "Destructor called as a result of the delete keyword being used" << endl;
   cout << "  Person::~Person() =>(" << firstName << "," << lastName<< "," << age << ")" <<  endl;
 
+}
+
+void Person::SetFirstName(string fName)
+{
+    this->firstName = fName;
+}
+
+string Person::GetFirstName()
+{
+    return this->firstName;
+}
+
+void Person::SetLastName(string lName)
+{
+    this->lastName = lName;
+}
+
+string Person::GetLastName()
+{
+    return this->lastName;
 }
 
 void Person::sayHello(){
