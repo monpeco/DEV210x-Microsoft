@@ -665,3 +665,44 @@ allowed to access private data in Body because Handle is a friend.
 ---
 
 #### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Introducing Virtual Functions
+
+# Introducing Virtual Functions
+
+One of the reasons for using inheritance is to reuse common code across a hierarchy of 
+related classes. For example, if you have similar classes such as Student, Employee, and 
+Contractor, you can factor-out common data members and member functions into a base class 
+such as Person. The Student, Employee, and Contractor classes can then inherit these 
+common members from the Person class.
+
+When you use inheritance, you often find that the derived classes need to implement 
+specialized versions of some member functions from the base class. For example, the 
+Person class might define a display() member function to display a person's name and age, 
+whereas the Student class might want to display the student's course as well. This is 
+known as "overriding". 
+
+To define overridable member functions properly in C++, you must prefix the function 
+with the virtual keyword in the base class definition: 
+
+```c++
+class Person
+{
+private:
+    std::string name;
+    int age;
+
+public:
+    virtual void display() const;        // Overrideable function.
+    ...
+};
+```
+
+Note that you don't use the virtual keyword when you implement the function in the source file:
+
+```c++
+void Person::display() const
+{
+    std::cout << name << ", " << age << std::endl;
+}
+```
+
+---
