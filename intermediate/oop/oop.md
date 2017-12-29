@@ -492,5 +492,93 @@ void SomeExternalFunction(MyClass & targetObject)
 }
 ```
 
+---
 
+#### Module Three More OOP in C++   Encapsulation and Protected Access   Friend Classes
 
+# Friend Classes
+
+A class can define another class as its friend. A friend class can access all the members of 
+the first class. This is useful if you have a "binary system", that is two classes that are 
+intimately related to each other. 
+
+A good example of friend classes is the "handle-body" idiom in C++. This idiom splits one 
+semantic class into two related class - a "body" class that defines the private data, and a 
+"handle" class that defines the public behavior. The body defines the handle class as a friend 
+class, so that the handle class can access all the members (including private members) in the 
+body class. 
+
+The following code listings show how to implement the handle-body idiom in C++ using friend 
+classes.
+
+**Body.h**
+
+```c++
+class Handle;  // Forward reference of the "handle" class, so the compiler knows about it.
+
+class Body
+{
+    friend class Handle;
+
+private:
+    int someData;
+    ...
+};
+```
+
+**Handle.h**
+
+```c++
+#include "Body.h"
+
+class Handle
+{
+private:
+    Body * body;   // The "handle" class typically maintains an internal instance of the "body" class.
+
+public:
+    Handle();
+    ~Handle();
+
+    void someOperationOnBody();
+    ...
+};
+```
+
+**Handle.cpp**
+
+```c++
+#include "Handle.h"
+
+Handle::Handle()
+{
+    body = new Body;  // Create the underlying "body" object.
+}
+
+Handle::~Handle()
+{
+    delete body;      // Delete the underlying "body" object.
+}
+
+void Handle::someOperationOnBody()
+{
+    someData = 42;    // Perform operations on the underlying "body" object.
+}
+```
+
+Client code just works with the "handle" class - the client code has no knowledge of the 
+underlying "body" class. Consider the following example:
+
+**Main.cpp**
+
+```c++
+#include "Handle.h"
+
+int main()
+{
+    Handle h;
+    h.someOperationOnBody();
+
+    return 0;
+}
+```
