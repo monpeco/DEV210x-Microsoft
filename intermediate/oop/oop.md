@@ -256,3 +256,188 @@ properly.
 ---
 
 #### Module Three More OOP in C++   Encapsulation and Protected Access   The Protected Keyword
+
+# The Protected Keyword
+
+When dealing with inheritance in your C++ code, you may find situations where you would 
+like to keep certain members of the base class private to the "outside world" but public 
+to derived classes of that base class.  C++ provides the keyword protected, for this purpose.
+
+As an example, let's consider our Person class and some derived class, such as Student.  
+In our existing code samples thus far, we have noted that Student cannot access firstName, 
+lastName, or age directly.  This is because the member variables are declared private in 
+Person.  We could use the public accessor methods of the Person class to gain access to 
+these private member variables or, we could make those member variables protected instead.  
+By doing so, we can then initialize them directly in our Student class without needing to 
+call the call the accessor methods.   Perhaps we want to do this because we want to, as 
+an example, validate age differently for a Student versus a Teacher.  We can create custom 
+validation code in the Student or Teacher derived classes and then set the member variable 
+directly for age by making age have protected access.
+
+Perhaps some pure OOP folks might state at this point that we should make the SetAge() 
+accessor a virtual function and force derived classes to override this function, but 
+we'll cover virtual functions in the next topic.  For this example, we'll use this 
+scenario to demonstrate protected access.   The code changes for Person and Student 
+are listed below.
+
+**Person.h**
+
+```c++
+#pragma once
+#include <string>
+class Person
+{
+
+private:
+	std::string firstName;
+	std::string lastName;
+
+protected:
+	int age;
+
+public:
+
+	Person();
+	Person(std::string fName, std::string lName);
+	Person(std::string fName, std::string lName, int age);
+	~Person();
+
+	void SetFirstName(std::string fName);
+	std::string GetFirstName();
+		
+	void SetLastName(std::string lName);
+	std::string GetLastName();
+
+	void SayHello();
+};
+```
+
+**Person.cpp**
+
+```c++
+#include "stdafx.h"
+#include "Person.h"
+#include <iostream>
+
+
+Person::Person()
+{
+
+}
+
+Person::Person(std::string fName, std::string lName)
+{
+	firstName = fName;
+	lastName = lName;
+}
+
+Person::Person(std::string fName, std::string lName, int age)
+{
+	firstName = fName;
+	lastName = lName;
+
+	age = age;
+}
+
+
+Person::~Person()
+{
+	std::cout << "Destructor called as a result of the delete keyword being used" << std::endl;
+}
+
+void Person::SetFirstName(std::string fName)
+{
+	this->firstName = fName;
+}
+
+std::string Person::GetFirstName()
+{
+	return this->firstName;
+}
+
+void Person::SetLastName(std::string lName)
+{
+	this->lastName = lName;
+}
+
+std::string Person::GetLastName()
+{
+	return this->lastName;
+}
+
+
+void Person::SayHello()
+{
+	std::cout << "Hello" << std::endl;
+}
+```
+
+**Student.h**
+
+```c++
+#pragma once
+#include "Person.h"
+class Student :
+	public Person
+{
+public:
+	Student();
+	~Student();
+
+	void setAge(int);
+	int getAge();
+	void SayHello();
+};
+```
+
+**Student.cpp**
+
+```c++
+#include "stdafx.h"
+#include "Student.h"
+#include <iostream>
+
+Student::Student()
+{
+}
+
+Student::~Student()
+{
+}
+
+void Student::setAge(int age)
+{
+	if (age < 5)
+	{
+		std::cout << "Student age needs to at least 5 years old." << std::endl;
+	}
+	else
+	{
+		this->age = age;
+	}
+}
+
+int Student::getAge()
+{
+	return this->age;
+}
+
+void Student::SayHello()
+{
+	std::cout << "Hey, how's it goin'?" << std::endl;
+}
+```
+
+Looking at the Person header file, we note that the member variable age is 
+now listed in the section under protected.  You will also notice that the 
+setAge() and getAge() are no longer present in the Person class file.  
+Again, we could have left them in Person and forced or allowed overridden 
+functions in the derived classes but in this instance, we are just 
+demonstrating the use of protected access.
+
+In the Student class, we note that in the setAge() and getAge() functions, we 
+can now access the age member variable directly.   To test this on your own 
+computer, copy and paste this code into a C++ project and verify that there 
+are no compilation errors.  Then, go back into Person.h and change the age 
+member variable to private and see what errors are generated in the Student 
+functions dealing with age.
