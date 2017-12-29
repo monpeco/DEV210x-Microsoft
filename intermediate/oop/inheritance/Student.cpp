@@ -3,7 +3,7 @@
 #include "Student.h"
 using namespace std;
 
-Student::Student(){
+Student::Student():Person("Tom", "Thumb"){
     // this line will cause a compiler error    
     //firstName = "Tom";
   cout << "    Student::Student()" << endl;
