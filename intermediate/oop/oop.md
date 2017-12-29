@@ -441,3 +441,56 @@ computer, copy and paste this code into a C++ project and verify that there
 are no compilation errors.  Then, go back into Person.h and change the age 
 member variable to private and see what errors are generated in the Student 
 functions dealing with age.
+
+
+---
+
+#### Module Three More OOP in C++   Encapsulation and Protected Access   Friend Functions
+
+# Friend Functions
+
+A class can define an external function as a friend function. This allows 
+the friend function to access all the members of the class, including 
+private members. Friend functions are non-members, which means they 
+don't receive a "this" pointer. Consequently, they must require an 
+explicit parameter to access an object. 
+
+The following example shows how a class can declare an external 
+function named SomeExternalFunction() as a friend function of the 
+class. SomeExternalFunction() receives a reference parameter that 
+identifies the object the function will deal with: 
+
+**MyClass.h**
+
+```c++
+class MyClass
+{
+	friend void SomeExternalFunction(MyClass & targetObject);
+
+	// Data members and member functions, as required.
+	...
+};
+```
+
+The following code snippet shows how you might implement 
+SomeExternalFunction(). Typically, you put friend function 
+implementations in the same source file as member function 
+implementations, because they are all part of the semantic 
+meaning of the same class. However you don't prefix friend 
+functions with the ClassName:: syntax, because they are not 
+members of the class:
+
+**MyClass.cpp**
+
+```c++
+#include "MyClass.h"
+
+void SomeExternalFunction(MyClass & targetObject)
+{
+	// Access any members on the target object, i.e. public, private, or protected members.
+	...
+}
+```
+
+
+
