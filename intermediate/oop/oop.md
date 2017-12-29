@@ -582,3 +582,86 @@ int main()
     return 0;
 }
 ```
+
+---
+
+#### Module Three More OOP in C++   Encapsulation and Protected Access   Demo: Friends
+
+# Demo: Friends
+
+https://youtu.be/G-ZKrtkHeI8
+
+>> In this demonstration we're going to take a look at friend classes in C++. A
+friend class is allowed to access all the members of another class even the
+private members. You don't use friend classes that much in C++, but it is
+useful in situations where you have two classes which are very closely related. In the example
+we're going to use is the handle and body idiom where the Body class declares the
+Handle class as a friend.
+So first of all I'll show you what the classes look like and then we'll discuss
+the why behind the example. So i have two classes. We have the Body class first of
+all. This class represents some internal detail that you would like the shield
+away from the client programmer. You don't want the client programmer to know much at
+all about the Body class, and the reason for that is that you want to be able to
+be able to change its implementation without necessarily
+affecting the client's code. So what we do in the Body class, this is a very simple
+implementation of the Handle/Body pattern. But in our Body class we
+declare another class, Handle, as a friend.
+it's the Handle class which the client code will deal with. They won't know anything
+about the Body class. If you like the Handle class is the bit above the water and the
+Body class is the bit below the water, that the client code won't see. When you
+declare a friend class, at this point the compiler doesn't really need to know
+much about the Handle class, but it does need to know that it is a class and
+that's what this statement here does. This is called a forward reference. It
+introduces the name of the Handle class to the compiler so it knows that the
+word Handle, means class, is a class name. And that's enough for you to declare a
+friend class.
+Ok the compiler will say, okay this Body class, it has some other class called
+Handle, which is a friend. I can live with that, and then the rest of the Body class
+is whatever you want it to be. So that would be private data, functions, you know
+whatever. So that's the Body class
+definition, and if I show you the Body implementation. So we'd have methods in
+there. That would just be a regular Body class. Now let me show you the Handle
+class. Handle is effectively a wrapper over body. So this is a typical implementation.
+The Handle class has a pointer to a Body. So at runtime, when a handle object is
+created, it will create a Body object behind the scenes. So the Handle points
+to the Body and the Handle class will define methods that encapsulate all
+operations on Body. So here, the Handle class has some public method. This will
+be visible in the client code. When the client code calls this
+method, that method will do some work in the background on the underlying Body. Of
+course the client code doesn't see the Body class at all. All the client class sees,
+is the Handle, the constructor and destructor and this method underneath
+the surface the Handle is actually just a wrapper for some underlying Body
+implementation. So this is an example of delegation in C++. The Body class does
+some stuff in the background and the Handle class is the delegated
+wrapper. It's the Handle class that the clients see. They don't even know
+about the Body class's existence, and that's good because it means that you
+can change how the Body class is implemented later and the rest of the
+world will be oblivious, because they didn't even know it existed in the first
+place. And this decoupling is very important when you have large systems.
+The ability to change how you might have implemented Body class internally
+without changing the rest of the code at all. You don't break anything when you
+re-implement how that Body class is implemented. Let me show you the Handle
+implementation. So when the client creates a new Handle, the Handle internally creates
+a new Body. So the Handle object contains a Body and it owns it.
+Which means that when the Handle object is destroyed, it will also destroy its
+associated Body. So what we can say, from an object only
+point of view
+is that the Handle object has custody over the Body. The Handle creates the
+Body initially and Handle destroys the Body at the end. It completely owns the
+lifetime of the Body and here's the implementation of the wrapper method. This
+is the method that the client code will call, some operation, underneath the
+surface, the Handle just does some other work on the Body. But of course that's
+away from the client's view. All the client sees is the name of this method. So in
+the client code, in main() we create a Handle object and we invoke a method on
+the Handle object. No mention of Body at all. I can change the Body class in any
+way I want. The client code isn't gonna be affected in any way whatsoever. So
+that's an example of friend classes. The fact that the Body class had private
+state, which it wanted the other class to be able to manipulate. So
+the Handle implementation accesses some data which is actually private notice,
+and it can do that because Handle is a friend of Body. So the Handle class is
+allowed to access private data in Body because Handle is a friend.
+
+
+---
+
+#### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Introducing Virtual Functions
