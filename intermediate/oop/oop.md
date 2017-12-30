@@ -792,3 +792,41 @@ Here are some examples, using the Person and Student classes:
 ---
 
 #### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Invoking Virtual Functions
+
+# Invoking Virtual Functions
+
+When you invoke a virtual function through a pointer or reference, C++ ensures the "correct" version of the function is invoked - it's the type of the actual object being pointed to that matters, not the static type of the pointer or reference variable itself.
+
+Consider the following example using pointers:
+
+    // Declare a pointer of type Person, which actually points to a Student object.
+    Person * p = new Student;
+
+    // Call the virtual display() function. This will call the Student display() function, 
+    // because that's the type of object p points to at run time.
+    p->display();
+    
+The same effect happens when you use references:
+
+    // Declare a reference of type Person, which actually refers to a Student object.
+    Person & r = someStudentObject;
+
+    // Call the virtual display() function. This will call the Student display() function, 
+    // because that's the type of object r refers to at run time.
+    r.display();
+
+When you delete an object, the C++ compiler ensures a destructor is called. If you've defined the destructor as virtual, then the run-time mechanism ensures the correct destructor is called based on the type of the object (rather than the static type of the pointer):
+
+    // Declare a pointer of type Person, which actually points to a Student object.
+    Person * p = new Student;
+
+    // Use the object.
+    // ...
+
+    // When you're ready, delete the object. If the destructor is virtual, the type of the object at run time
+    // determines which destructor is called. In this case, it will be the Student destructor.
+    delete p;
+
+---
+
+#### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Demo: Implementing a Virtual Function
