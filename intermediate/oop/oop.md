@@ -748,3 +748,29 @@ the function using the syntax BaseClassName::FunctionName(). For example:
 ---
 
 #### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Virtual Destructors
+
+# Virtual Destructors
+
+If a base class defines one or more virtual functions, then it should also define a virtual destructor. 
+For example, here is a virtual destructor for the Person class:
+
+    class Person
+    {
+        ...
+    public:
+        virtual ~Person();
+        ...
+    };
+
+    Person::~Person()
+    {
+        // Any destruction code for Person object.
+    }
+
+By defining a virtual destructor in the base class, you ensure that the correct destructor is always called 
+when you delete an object. We discuss this subject in more detail shortly.
+
+
+---
+
+#### Module Three More OOP in C++   Virtual Functions and Abstract Classes   The Principle of Substitutability
