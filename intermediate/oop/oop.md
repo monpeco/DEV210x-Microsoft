@@ -706,3 +706,45 @@ void Person::display() const
 ```
 
 ---
+
+#### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Overriding Virtual Functions
+
+# Overriding Virtual Functions
+
+When you define a derived class, you can optionally choose to override some or all of the virtual functions 
+defined in the base class. Note that you don't have to override virtual functions if you don't want to. 
+
+To override a virtual function in a derived class, re-declare the function in the derived class header file. 
+The function signature must match that in the base class. You should use the virtual keyword again, to remind
+anyone reading your code that this is an "overrideable" function - for example, subsequent derived classes can 
+choose to override this function further if appropriate. 
+
+The following example shows how the Student class can declare that it overrides the display() function from its 
+base class:
+
+    class Student : public Person
+    {
+    private:
+        std::string course;
+
+    public:
+         virtual void display() const;     // Override function from base class.
+        ...
+    };
+
+In the source file for the derived class, implement the new version of the function for your derived class. 
+If you want to leverage the existing functionality of the base-class version of the function, you can call 
+the function using the syntax BaseClassName::FunctionName(). For example:
+
+    void Student::display() const
+    {
+        // Call base-class version of display(), to display person-related info.
+        Person::display();
+
+        // Now display the student-related info.
+        std::cout << course << std::endl;
+    }
+    
+---
+
+#### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Virtual Destructors
