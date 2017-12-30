@@ -774,3 +774,21 @@ when you delete an object. We discuss this subject in more detail shortly.
 ---
 
 #### Module Three More OOP in C++   Virtual Functions and Abstract Classes   The Principle of Substitutability
+
+# The Principle of Substitutability
+
+In common with other object-oriented languages, C++ allows you to create base-class variables and initialize them to point to derived-class objects. Specifically, a C++ pointer of type X can point to an X object or anything inherited from X. Likewise a C++ reference variable of type X can refer to an X object or anything inherited from X. 
+
+Here are some examples, using the Person and Student classes:
+
+    // A base-class pointer can point to that type of object, or to any derived type of object.
+    Person * p1 = new Person;
+    Person * p2 = new Student;
+
+    // A base-class reference can refer to that type of object, or to any derived type of object.
+    Person & r1 = somePersonObject;
+    Person & r2 = someStudentObject;
+    
+---
+
+#### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Invoking Virtual Functions
