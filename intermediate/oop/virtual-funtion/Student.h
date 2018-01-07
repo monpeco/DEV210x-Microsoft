@@ -8,5 +8,6 @@ class Student : public Person{
     string course;
   
   public:
+    Student();
     virtual void display() const;     // Override function from base class.
 };

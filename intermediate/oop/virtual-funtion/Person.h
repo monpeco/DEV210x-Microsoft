@@ -8,6 +8,7 @@ class Person
     
   public:
   virtual void display() const;
+  Person();
   virtual ~Person();
   
 };
