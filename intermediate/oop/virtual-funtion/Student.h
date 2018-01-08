@@ -9,5 +9,6 @@ class Student : public Person{
   
   public:
     Student();
+    virtual ~Student();
     virtual void display() const;     // Override function from base class.
 };
