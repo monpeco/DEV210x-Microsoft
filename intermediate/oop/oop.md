@@ -830,3 +830,23 @@ When you delete an object, the C++ compiler ensures a destructor is called. If y
 ---
 
 #### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Demo: Implementing a Virtual Function
+
+# Demo: Implementing a Virtual Function
+
+This example illustrates how to define and override virtual functions in C++. The example shows what happens 
+when you invoke virtual functions through base-class pointers and base-class reference variables, and also 
+what happens when you delete an object.
+
+TODO: missing video
+
+---
+
+#### Module Three More OOP in C++   Virtual Functions and Abstract Classes   Demo: Implementing Pure Virtual Functions
+
+# Demo: Implementing Pure Virtual Functions
+
+TODO: missing video
+
+---
+
+#### Module Three More OOP in C++   Lab   Lab Instructions
