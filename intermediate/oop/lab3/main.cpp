@@ -7,5 +7,7 @@ int main(){
   
   Person person1;
   
+  person1.outputAge();
+  
   return 0;
 }

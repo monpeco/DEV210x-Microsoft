@@ -17,4 +17,5 @@ class Person{
     Person();
     ~Person();
     virtual void outputIdentity();
+    virtual void outputAge();
 };

@@ -14,3 +14,9 @@ Person::~Person(){
 void Person::outputIdentity(){
     
 }
+
+void Person::outputAge(){
+    cout << "I am " << age << " years old" << endl;
+}
+
+
