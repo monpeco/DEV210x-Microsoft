@@ -4,7 +4,10 @@
 using namespace std;
 
 Person::Person(){
-  
+    first_name = "null";
+    last_name = "null";
+    age = -1;
+    race = "null";
 }
 
 Person::~Person(){
