@@ -2,6 +2,7 @@
 #include <iostream>
 #include "person.h" 
 #include "student.h" 
+#include "teacher.h" 
 using namespace std;
 
 int main(){
@@ -12,6 +13,9 @@ int main(){
   
   Student student1;
   student1.outputAge();
-  
+
+  Teacher teacher1;
+  teacher1.outputAge();
+
   return 0;
 }
