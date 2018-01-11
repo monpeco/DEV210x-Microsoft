@@ -10,3 +10,7 @@ Person::Person(){
 Person::~Person(){
   
 }
+
+void Person::outputIdentity(){
+    
+}

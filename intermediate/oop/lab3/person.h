@@ -16,4 +16,5 @@ class Person{
   public:
     Person();
     ~Person();
+    virtual void outputIdentity();
 };
