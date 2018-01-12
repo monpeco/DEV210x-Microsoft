@@ -11,11 +11,13 @@ int main(){
   
   person1.outputAge();
   
-  Student student1;
+  Student student1("string first_name", "string last_name", 12, "string race");
   student1.outputAge();
 
   Teacher teacher1;
   teacher1.outputAge();
+  
+  /*g++ main.cpp person.cpp student.cpp teacher.cpp -o main.exe*/
 
   return 0;
 }
