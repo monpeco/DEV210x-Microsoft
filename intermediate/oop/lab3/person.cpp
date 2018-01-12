@@ -22,7 +22,7 @@ Person::~Person(){
 }
 
 void Person::outputIdentity(){
-    
+    cout << "outputIdentity not implemented" << endl;
 }
 
 void Person::outputAge(){
