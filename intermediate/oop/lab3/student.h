@@ -7,4 +7,5 @@ class Student : public Person{
     Student();
     Student(string first_name, string last_name, int age, string race);
     ~Student();
+    virtual void outputIdentity();
 };
