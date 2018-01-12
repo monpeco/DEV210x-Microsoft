@@ -8,10 +8,11 @@ using namespace std;
 int main(){
   
   Person person1;
-  
+  person1.outputIdentity();
   person1.outputAge();
   
   Student student1("string first_name", "string last_name", 12, "string race");
+  student1.outputIdentity();
   student1.outputAge();
 
   Teacher teacher1;
