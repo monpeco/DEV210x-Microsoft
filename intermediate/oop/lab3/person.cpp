@@ -10,6 +10,13 @@ Person::Person(){
     race = "null";
 }
 
+Person::Person(string first_name, string last_name, int age, string race){
+    this->first_name = first_name;
+    this->last_name = last_name;
+    this->age = age;
+    this->race = race;
+}
+
 Person::~Person(){
   
 }

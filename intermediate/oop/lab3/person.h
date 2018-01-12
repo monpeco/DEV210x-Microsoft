@@ -16,6 +16,7 @@ class Person{
 
   public:
     Person();
+    Person(string first_name, string last_name, int age, string race);
     ~Person();
     virtual void outputIdentity();
     virtual void outputAge();
