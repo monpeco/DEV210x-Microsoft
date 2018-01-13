@@ -1,4 +1,6 @@
+#include <iostream>
 #include "teacher.h"
+using namespace std;
 
 Teacher::Teacher(){
   
@@ -11,4 +13,8 @@ Teacher::Teacher(string first_name, string last_name, int age, string race)
 
 Teacher::~Teacher(){
   
+}
+
+void Teacher::outputIdentity(){
+  cout << "I am a teacher" << endl;
 }
