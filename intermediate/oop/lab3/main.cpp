@@ -21,7 +21,7 @@ int main(){
 
   cout << "\nCreate teacher1" << endl;
 
-  Teacher teacher1;
+  Teacher teacher1("string first_name", "string last_name", 40, "string race");
   teacher1.outputIdentity();
   teacher1.outputAge();
 
