@@ -8,6 +8,7 @@ Person::Person(){
     last_name = "null";
     age = -1;
     race = "null";
+    cout << "Person()" << endl;
 }
 
 Person::Person(string first_name, string last_name, int age, string race){
