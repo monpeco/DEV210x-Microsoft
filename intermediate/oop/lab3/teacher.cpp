@@ -18,3 +18,8 @@ Teacher::~Teacher(){
 void Teacher::outputIdentity(){
   cout << "I am a teacher" << endl;
 }
+
+void Teacher::outputAge(){
+  cout << "I am a teacher and ";
+  Person::outputAge();
+}
