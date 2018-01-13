@@ -3,7 +3,7 @@
 using namespace std;
 
 Student::Student(){
-  
+  cout << "Student()" << endl;
 }
 
 Student::Student(string first_name, string last_name, int age, string race)
