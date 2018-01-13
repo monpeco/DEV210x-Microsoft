@@ -16,5 +16,11 @@ Student::~Student(){
 }
 
 void Student::outputIdentity(){
-    cout << "I am a student" << endl;
+  cout << "I am a student" << endl;
 }
+
+void Student::outputAge(){
+  cout << "I am a student" << endl;
+  Person::outputAge();
+}
+//Override the Student's OutputAge() virtual method to display the text "I am a student" and then calls the Person class's OutputAge() method
